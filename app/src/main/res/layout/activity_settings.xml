@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Settings">
+
+    <ImageView
+        android:id="@+id/backArrow"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="Back"
+        android:src="@drawable/arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/userImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backArrow" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Jonathan Patterson"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePicture" />
+
+    <TextView
+        android:id="@+id/userEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="hello@reallygreatsite.com"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userName" />
+
+    <!-- Mode Toggle (Dark & Light) -->
+    <TextView
+        android:id="@+id/generalSettingsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="24dp"
+        android:text="General Settings"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userEmail" />
+
+    <LinearLayout
+        android:id="@+id/modeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/generalSettingsLabel">
+
+        <ImageView
+            android:id="@+id/modeIcon"
+            android:layout_width="48dp"
+            android:layout_height="39dp"
+            android:contentDescription="Mode Icon"
+            android:src="@drawable/darkandlight"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="301dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mode"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="107dp"
+            tools:layout_editor_absoluteY="301dp" />
+
+        <Switch
+            android:id="@+id/darkLightSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dark & Light" />
+
+    </LinearLayout>
+
+    <!-- Change Password Button -->
+    <LinearLayout
+        android:id="@+id/changePasswordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/modeLayout">
+
+        <!-- Icon -->
+        <ImageView
+            android:id="@+id/changePasswordIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Change Password Icon"
+            android:src="@drawable/key" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Change Password"
+            android:textSize="16sp" />
+
+        <!-- Arrow -->
+        <ImageView
+            android:id="@+id/changePasswordArrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="Arrow"
+            android:src="@drawable/rightarrow" />
+    </LinearLayout>
+
+    <!-- Language Button -->
+    <LinearLayout
+        android:id="@+id/languageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/changePasswordLayout">
+
+        <ImageView
+            android:id="@+id/languageIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Language Icon"
+            android:src="@drawable/language" />
+
+        <!-- Label -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Language"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/languageArrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="Arrow"
+            android:src="@drawable/rightarrow" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/informationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Information"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/languageLayout" />
+
+    <!-- About App -->
+
+    <!-- Terms & Conditions -->
+
+    <!-- Privacy Policy -->
+
+    <Button
+        android:id="@+id/aboutAppButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About App"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="505dp" />
+
+    <Button
+        android:id="@+id/termsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Terms & Conditions"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="567dp" />
+
+    <Button
+        android:id="@+id/privacyPolicyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Privacy Policy"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="631dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="SETTINGS"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="116dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
