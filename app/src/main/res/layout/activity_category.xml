@@ -73,17 +73,6 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="192dp" />
 
-    <GridLayout
-        android:id="@+id/categoryGrid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:rowCount="3"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="488dp">
-
     <EditText
         android:id="@+id/searchBar"
         android:layout_width="457dp"
@@ -95,5 +84,74 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="112dp" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="66dp"
+        tools:layout_editor_absoluteY="329dp">
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="12dp"
+        android:src="@drawable/grocery"
+        tools:layout_editor_absoluteX="21dp"
+        tools:layout_editor_absoluteY="239dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GROCERY"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="299dp" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="12dp"
+        android:src="@drawable/salary"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="239dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DEBIT ORDERS"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="299dp" />
+
+    <RelativeLayout
+        android:layout_width="731dp"
+        android:layout_height="109dp"
+        android:background="#4B636E"
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="-8dp"
+        tools:layout_editor_absoluteY="624dp">
+
+
+        <ImageView
+            android:id="@+id/imageAdd"
+            android:layout_width="78dp"
+            android:layout_height="70dp"
+            android:padding="12dp"
+            android:src="@drawable/add"
+            tools:layout_editor_absoluteX="21dp"
+            tools:layout_editor_absoluteY="239dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="62dp"
+            android:layout_height="59dp"
+            app:srcCompat="@drawable/user" />
+
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
