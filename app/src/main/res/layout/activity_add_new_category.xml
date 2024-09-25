@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddNewCategory">
+
+    <TextView
+        android:id="@+id/tv_add_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Add New Category"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <EditText
+        android:id="@+id/edtCategoryName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Category Name"
+        android:padding="12dp"
+        android:textSize="16sp"
+
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="180dp" />
+
+    <CheckBox
+        android:id="@+id/cb_manage_spending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manage Spending"
+        android:textSize="16sp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-10dp"
+        tools:layout_editor_absoluteY="304dp" />
+
+    <EditText
+        android:id="@+id/edtAmountGoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Amount Goal"
+        android:inputType="numberDecimal"
+        android:padding="12dp"
+        android:textSize="16sp"
+
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="410dp" />
+
+    <Button
+        android:id="@+id/btn_select_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Icon"
+        tools:layout_editor_absoluteX="-34dp"
+        tools:layout_editor_absoluteY="486dp" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="548dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
