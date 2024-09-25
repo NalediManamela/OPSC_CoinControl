@@ -23,7 +23,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/userImage"
+        android:src="@drawable/userimage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/backArrow" />
@@ -98,7 +98,7 @@
             android:id="@+id/darkLightSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dark & Light" />
+            android:text="Dark and Light" />
 
     </LinearLayout>
 
@@ -204,7 +204,7 @@
         android:id="@+id/termsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Terms & Conditions"
+        android:text="Terms and Conditions"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="567dp" />
 

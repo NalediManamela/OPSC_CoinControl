@@ -24,7 +24,7 @@
             android:layout_marginStart="11dp"
             android:layout_marginEnd="16dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/userImage" />
+            android:src="@drawable/userimage" />
 
         <TextView
             android:id="@+id/welcomeText"

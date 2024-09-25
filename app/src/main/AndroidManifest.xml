@@ -25,9 +25,6 @@
             android:name=".Settings"
             android:exported="false" />
         <activity
-            android:name=".CreateNewAccount"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

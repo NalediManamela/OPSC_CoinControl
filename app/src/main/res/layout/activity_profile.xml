@@ -47,7 +47,7 @@
             android:contentDescription="Profile Image"
             android:padding="4dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/userImage" />
+            android:src="@drawable/userimage" />
 
         <ImageView
             android:id="@+id/editProfileImage"

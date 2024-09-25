@@ -51,7 +51,7 @@
         tools:layout_editor_absoluteY="486dp" />
 
     <Button
-        android:id="@+id/btn_addCategory"
+        android:id="@+id/btnAddCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ADD"
