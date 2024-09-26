@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OPSC_CoinControl"
         tools:targetApi="31">
+
+        <activity
+            android:name=".Category"
+            android:exported="false"
+            android:label="@string/title_activity_transactions"
+            android:theme="@style/Theme.OPSC_CoinControl.NoActionBar" />
         <activity
             android:name=".AddDebitOrder"
             android:exported="false" />
@@ -37,7 +43,7 @@
             android:name=".Settings"
             android:exported="false" />
         <activity
-            android:name=".Category"
+            android:name=".Transaction"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

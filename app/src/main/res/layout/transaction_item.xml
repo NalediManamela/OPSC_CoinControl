@@ -1,0 +1,32 @@
+<!-- res/layout/transaction_item.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@android:color/white"
+    android:layout_marginBottom="4dp">
+
+    <TextView
+        android:id="@+id/tvTransactionName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transaction Name"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvTransactionAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transaction Amount"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvTransactionDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transaction Date"
+        android:textSize="14sp" />
+</LinearLayout>

@@ -26,4 +26,9 @@ interface ApiService {
 
     @POST("api/debitorders")
     fun postDebitOrders(@Body debitOrder: DebitOrderClass): Call<DebitOrderClass>
+
+    @GET("api/transaction/category/{categoryId}")
+    fun getTransactionsByCategory(@Path("categoryId") categoryId: Int): Call<List<TransactionsClass>>
+
+
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".Transaction">
+
+    <TextView
+        android:id="@+id/lblBudget"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Amount Budgeted:"
+        app:layout_constraintEnd_toStartOf="@+id/txtViewBudgeted"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/lblAmountSpent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Amount Spent:"
+        app:layout_constraintEnd_toStartOf="@+id/txtViewSpent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblBudget"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/txtViewBudgeted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/lblBudget"
+        app:layout_constraintTop_toTopOf="@+id/lblBudget"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/txtViewSpent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/lblAmountSpent"
+        app:layout_constraintTop_toTopOf="@+id/lblAmountSpent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTransactions"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:background="#D1CFCF"
+        app:layout_constraintTop_toBottomOf="@id/lblAmountSpent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
