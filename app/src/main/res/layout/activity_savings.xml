@@ -12,30 +12,65 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total Amount Saved"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="104dp" />
 
     <TextView
-        android:id="@+id/tv_amount_saved"
+        android:id="@+id/txtAmountGoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="R7 300"
+        android:text="txtAmountGoal"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textSize="24sp"/>
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="228dp" />
 
     <TextView
         android:id="@+id/tv_amount_goal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Amount Goal"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="190dp" />
 
     <TextView
-        android:id="@+id/tv_goal_value"
+        android:id="@+id/txtAmountSaved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="R12 000"
+        android:text="txtAmountSaved"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textSize="24sp"/>
-    
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="136dp" />
+
+    <Button
+        android:id="@+id/btn_edit_goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Goal"
+        tools:layout_editor_absoluteX="290dp"
+        tools:layout_editor_absoluteY="212dp" />
+
+    <!-- Sort button -->
+    <Button
+        android:id="@+id/btn_sort_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sort by Date"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="294dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_entries"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="364dp" />
+
+    <!-- Floating button for adding a new entry -->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
