@@ -90,7 +90,7 @@
         tools:layout_editor_absoluteY="633dp" />
 
     <ImageButton
-        android:id="@+id/btnAdd2"
+        android:id="@+id/btnAddDebit"
         android:layout_width="82dp"
         android:layout_height="75dp"
         android:scaleType="fitCenter"

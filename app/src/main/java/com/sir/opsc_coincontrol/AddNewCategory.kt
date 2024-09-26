@@ -35,10 +35,10 @@ class AddNewCategory : AppCompatActivity() {
 
         btnAddCategory.setOnClickListener {
             val categoryName = edtCategoryName.text.toString().trim()
-            val budget = edtBudget.text.toString().trim().toDoubleOrNull()
+            val budgetCat = edtBudget.text.toString().trim().toDoubleOrNull()
 
             // Validate inputs
-            if (categoryName.isEmpty() || budget == null) {
+            if (categoryName.isEmpty() || budgetCat == null) {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -46,7 +46,7 @@ class AddNewCategory : AppCompatActivity() {
             // Create the category object
             val category = CategoryClass(
                 categoryName = categoryName,
-                budget = budget,
+                budget = budgetCat,
                 amount_Spent = 0.0 // Initially zero since the category is new
             )
 

@@ -6,6 +6,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     // Define the POST request to create a new category
@@ -19,4 +20,10 @@ interface ApiService {
     // Define a GET request to fetch a single category by ID
     @GET("api/categories/{id}")
     fun getCategoryById(@Path("id") id: Int): Call<CategoryClass>
+
+    @GET("api/categories")
+    fun getCategoriesByUser(@Query("userID") userId: Int): Call<List<CategoryClass>>
+
+    @POST("api/debitorders")
+    fun postDebitOrders(@Body debitOrder: DebitOrderClass): Call<DebitOrderClass>
 }
