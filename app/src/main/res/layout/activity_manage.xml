@@ -5,22 +5,22 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Savings">
+    tools:context=".Manage">
 
     <TextView
         android:id="@+id/tv_total_amount_saved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Amount Saved"
+        android:text="Amount Budgeted"
         android:textSize="16sp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="104dp" />
 
     <TextView
-        android:id="@+id/txtAmountGoal"
+        android:id="@+id/txtAmountSpent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="txtAmountGoal"
+        android:text="txtAmountSpent"
         android:textSize="24sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="16dp"
@@ -30,16 +30,16 @@
         android:id="@+id/tv_amount_goal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Amount Goal"
+        android:text="Amount Spent"
         android:textSize="16sp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="190dp" />
 
     <TextView
-        android:id="@+id/txtAmountSaved"
+        android:id="@+id/txtBudgetAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="txtAmountSaved"
+        android:text="txtBudgetAmount"
         android:textSize="24sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="16dp"
@@ -63,7 +63,7 @@
         tools:layout_editor_absoluteY="294dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_entries"
+        android:id="@+id/rv_entries2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -81,7 +81,7 @@
         tools:layout_editor_absoluteY="30dp" />
 
     <ImageButton
-        android:id="@+id/btnCategory"
+        android:id="@+id/btnCategory2"
         android:layout_width="80dp"
         android:layout_height="79dp"
         android:scaleType="fitCenter"
@@ -90,7 +90,7 @@
         tools:layout_editor_absoluteY="633dp" />
 
     <ImageButton
-        android:id="@+id/btnAdd"
+        android:id="@+id/btnAdd2"
         android:layout_width="82dp"
         android:layout_height="75dp"
         android:scaleType="fitCenter"

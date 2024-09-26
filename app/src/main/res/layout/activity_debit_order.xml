@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DebitOrder">
+
+    <ImageButton
+        android:id="@+id/btnAdd2"
+        android:layout_width="82dp"
+        android:layout_height="75dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/add"
+        tools:layout_editor_absoluteX="301dp"
+        tools:layout_editor_absoluteY="640dp" />
+
+    <ImageButton
+        android:id="@+id/btnCategory2"
+        android:layout_width="80dp"
+        android:layout_height="79dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/category"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="633dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_entries2"
+        android:layout_width="411dp"
+        android:layout_height="298dp"
+        android:layout_weight="1"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="142dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DEBIT ORDER"
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="102dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUMMARY:"
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="446dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total:"
+        tools:layout_editor_absoluteX="257dp"
+        tools:layout_editor_absoluteY="446dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Paid:"
+        tools:layout_editor_absoluteX="257dp"
+        tools:layout_editor_absoluteY="480dp" />
+
+    <TextView
+        android:id="@+id/Due"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Due"
+        tools:layout_editor_absoluteX="259dp"
+        tools:layout_editor_absoluteY="512dp" />
+
+    <TextView
+        android:id="@+id/txtTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="txtTotal"
+        tools:layout_editor_absoluteX="323dp"
+        tools:layout_editor_absoluteY="444dp" />
+
+    <TextView
+        android:id="@+id/txtPaid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="txtPaid"
+        tools:layout_editor_absoluteX="321dp"
+        tools:layout_editor_absoluteY="480dp" />
+
+    <TextView
+        android:id="@+id/txtDue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="txtDue"
+        tools:layout_editor_absoluteX="325dp"
+        tools:layout_editor_absoluteY="512dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
