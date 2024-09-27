@@ -26,7 +26,8 @@
         android:layout_marginBottom="16dp"
         android:text="Don't Have an Account ? "
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <EditText
         android:id="@+id/edtPassword"
@@ -57,9 +58,9 @@
         android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
+        android:backgroundTint="@color/Teal"
         android:text="Log in "
-        android:textColorHint="#2196F3"
-        android:textColorLink="#00BCD4"
+        android:textColorLink="#03A9F4"
         app:layout_constraintBottom_toTopOf="@+id/txtForgotPassword"
         app:layout_constraintEnd_toEndOf="@+id/txtForgotPassword" />
 
@@ -67,12 +68,13 @@
         android:id="@+id/edtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="23dp"
         android:ems="10"
         android:inputType="text"
         android:text="Email Address"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:layout_editor_absoluteX="101dp" />
+        app:layout_constraintStart_toStartOf="@+id/edtUserName"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -88,26 +90,40 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="31dp"
-        android:layout_height="31dp"
-        app:srcCompat="@drawable/email"
-        tools:layout_editor_absoluteX="270dp"
-        tools:layout_editor_absoluteY="441dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="43dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:srcCompat="@drawable/email" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="30dp"
-        android:layout_height="32dp"
-        app:srcCompat="@drawable/user2"
-        tools:layout_editor_absoluteX="270dp"
-        tools:layout_editor_absoluteY="374dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="374dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="35dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/user2" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="32dp"
-        android:layout_height="34dp"
-        app:srcCompat="@drawable/security"
-        tools:layout_editor_absoluteX="269dp"
-        tools:layout_editor_absoluteY="515dp" /> <!-- Replace with your image source -->
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="147dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtDontHaveAccount"
+        app:layout_constraintEnd_toEndOf="@+id/edtPassword"
+        app:layout_constraintStart_toEndOf="@+id/txtForgotPassword"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/security" /> <!-- Replace with your image source -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
