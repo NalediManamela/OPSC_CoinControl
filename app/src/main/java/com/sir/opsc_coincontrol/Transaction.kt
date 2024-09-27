@@ -224,7 +224,7 @@ class Transaction : AppCompatActivity() {
             month,
             day
         )
-        datePickerDialog.show()
+        datePickerDialog.show() //Comment
     }
 
 }
