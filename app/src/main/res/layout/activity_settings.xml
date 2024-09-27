@@ -7,149 +7,63 @@
     android:layout_height="match_parent"
     tools:context=".Settings">
 
-    <ImageView
-        android:id="@+id/backArrow"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:contentDescription="Back"
-        android:src="@drawable/arrow"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/profilePicture"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/userimage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/backArrow" />
-
-    <TextView
-        android:id="@+id/userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Username"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePicture" />
-
-    <TextView
-        android:id="@+id/userEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="userEmail"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userName" />
-
     <!-- Mode Toggle (Dark & Light) -->
-    <TextView
-        android:id="@+id/generalSettingsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="24dp"
-        android:text="General Settings"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userEmail" />
 
-    <LinearLayout
-        android:id="@+id/modeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingVertical="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/generalSettingsLabel">
-
-        <ImageView
-            android:id="@+id/modeIcon"
-            android:layout_width="48dp"
-            android:layout_height="39dp"
-            android:contentDescription="Mode Icon"
-            android:src="@drawable/darkandlight"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="301dp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Mode"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="107dp"
-            tools:layout_editor_absoluteY="301dp" />
-
-        <Switch
-            android:id="@+id/darkLightSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dark and Light" />
-
-    </LinearLayout>
 
     <!-- Change Password Button -->
 
-    <!-- Language Button -->
-    <LinearLayout
-        android:id="@+id/languageLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingVertical="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="388dp">
+    <!-- Language Button --><![CDATA[
 
-        <ImageView
-            android:id="@+id/languageIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="Language Icon"
-            android:src="@drawable/language" />
+    android:id="@+id/languageLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingVertical="12dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    tools:layout_editor_absoluteY="388dp">
 
-        <!-- Label -->
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Language"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:id="@+id/languageArrow"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="Arrow"
-            android:src="@drawable/rightarrow" />
-    </LinearLayout>
+    ]]>
 
     <TextView
-        android:id="@+id/informationLabel"
+        android:id="@+id/textView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="197dp"
+        android:layout_marginEnd="78dp"
+        android:layout_weight="1"
+        android:text="Mode"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/darkLightSwitch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/darkLightSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Information"
+        android:layout_marginEnd="49dp"
+        android:text="Dark and Light"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView5" />
+
+    <!-- Label -->
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="125dp"
+        android:layout_weight="1"
+        android:text="Language"
         android:textSize="16sp"
-        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/textview"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/languageLayout" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <!-- About App -->
 
@@ -159,38 +73,47 @@
 
     <Button
         android:id="@+id/aboutAppButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="180dp"
         android:text="About App"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="505dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/termsButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
         android:text="Terms and Conditions"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="567dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutAppButton" />
 
     <Button
         android:id="@+id/privacyPolicyButton"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
         android:text="Privacy Policy"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="631dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="125dp"
         android:text="SETTINGS"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="116dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
