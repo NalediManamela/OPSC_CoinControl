@@ -63,7 +63,7 @@
         tools:layout_editor_absoluteY="294dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_entries2"
+        android:id="@+id/debitList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -81,7 +81,7 @@
         tools:layout_editor_absoluteY="30dp" />
 
     <ImageButton
-        android:id="@+id/btnCategory2"
+        android:id="@+id/btnCategory"
         android:layout_width="80dp"
         android:layout_height="79dp"
         android:scaleType="fitCenter"
