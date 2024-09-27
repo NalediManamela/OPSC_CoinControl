@@ -47,7 +47,7 @@ class AddNewCategory : AppCompatActivity() {
             val category = CategoryClass(
                 categoryName = categoryName,
                 budget = budgetCat,
-                amount_Spent = 0.0 // Initially zero since the category is new
+                amountSpent = 0.0 // Initially zero since the category is new
             )
 
             // Call the API to add the category

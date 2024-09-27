@@ -30,5 +30,9 @@ interface ApiService {
     @GET("api/transaction/category/{categoryId}")
     fun getTransactionsByCategory(@Path("categoryId") categoryId: Int): Call<List<TransactionsClass>>
 
+    @POST("api/transaction")
+    fun postTransaction(@Body transaction: TransactionsClass): Call<TransactionsClass>
+
+
 
 }
