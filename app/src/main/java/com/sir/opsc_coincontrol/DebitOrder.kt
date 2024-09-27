@@ -21,7 +21,7 @@ class DebitOrder : AppCompatActivity() {
     private lateinit var rvDebit: RecyclerView
     private lateinit var debitAdapter: debitAdapter
     private lateinit var txtDue: TextView
-    private lateinit var total_Amount: TextView
+    private lateinit var txtTotal: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,12 +32,13 @@ class DebitOrder : AppCompatActivity() {
         rvDebit = findViewById(R.id.rv_entries2)
         rvDebit.layoutManager = LinearLayoutManager(this)
 
-        txtDue = findViewById(R.id.txtDue)
-        total_Amount= findViewById(R.id.txtTotal)
+        txtDue = findViewById(R.id.txtDUE)
+        txtTotal= findViewById(R.id.txtTotal)
 
         val userID = 7 // Change this to the actual Category ID you want to test with
-        fetchTransactions(userID)
-
+        fetchDebitOrders(userID)
+        fetchTotalDueForCurrentMonth()
+        fetchTotalDebitAmount()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -45,20 +46,20 @@ class DebitOrder : AppCompatActivity() {
         }
     }
 
-    private fun fetchTransactions(userID: Int) {
-        // Fetch debit orders and display in RecyclerView
-        RetrofitClient.instance.getDebitOrders(userID)
+    private fun fetchDebitOrders(userID: Int) {
+        // Fetch debit orders for the specified user ID
+        RetrofitClient.instance.getDebit(userID)
             .enqueue(object : Callback<List<DebitOrderClass>> {
                 override fun onResponse(
                     call: Call<List<DebitOrderClass>>,
                     response: Response<List<DebitOrderClass>>
                 ) {
                     if (response.isSuccessful) {
-                        val transactions = response.body() ?: emptyList()
-                        debitAdapter = debitAdapter(transactions)
+                        val debitOrders = response.body() ?: emptyList()
+                        debitAdapter = debitAdapter(debitOrders) // Ensure your adapter is properly instantiated
                         rvDebit.adapter = debitAdapter
                     } else {
-                        Toast.makeText(this@DebitOrder, "Failed to load transactions", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@DebitOrder, "Error: ${response.code()} - ${response.message()}", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -66,14 +67,16 @@ class DebitOrder : AppCompatActivity() {
                     Toast.makeText(this@DebitOrder, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
+    }
 
-        // Fetch total debit amount and display in txtTotal
+
+    private fun fetchTotalDebitAmount() {
         RetrofitClient.instance.getTotalDebitOrders()
             .enqueue(object : Callback<Double> {
                 override fun onResponse(call: Call<Double>, response: Response<Double>) {
                     if (response.isSuccessful) {
                         val totalAmount = response.body() ?: 0f
-                        total_Amount.text = "Total: $totalAmount" // Display total amount
+                        txtTotal.text = "Total: $totalAmount" // Display total amount
                     } else {
                         Toast.makeText(this@DebitOrder, "Failed to load total amount", Toast.LENGTH_SHORT).show()
                     }
@@ -85,8 +88,27 @@ class DebitOrder : AppCompatActivity() {
             })
 
 
-
-
     }
+
+
+    private fun fetchTotalDueForCurrentMonth() {
+        // Fetch the total due for the current month and display it in txtDue
+        RetrofitClient.instance.getTotalDueForCurrentMonth()
+            .enqueue(object : Callback<Double> {
+                override fun onResponse(call: Call<Double>, response: Response<Double>) {
+                    if (response.isSuccessful) {
+                        val totalDueAmount = response.body() ?: 0.0
+                        txtDue.text = "Total Due this Month: $totalDueAmount" // Display total due amount
+                    } else {
+                        Toast.makeText(this@DebitOrder, "Failed to load total due amount", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Double>, t: Throwable) {
+                    Toast.makeText(this@DebitOrder, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
 
 }

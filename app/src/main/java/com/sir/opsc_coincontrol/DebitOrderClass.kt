@@ -10,5 +10,5 @@ class DebitOrderClass (
     var debit_Amount: Double,
     var total_Amount: Double = 0.0,
     var debit_Date: String?,
-
+     var Due_Date: String?
 )

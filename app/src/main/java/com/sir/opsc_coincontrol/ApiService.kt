@@ -28,7 +28,7 @@ interface ApiService {
     fun postDebitOrders(@Body debitOrder: DebitOrderClass): Call<DebitOrderClass>
 
     @GET("api/debitorders")
-    fun getDebitOrders(@Query("userID") userId: Int): Call<List<DebitOrderClass>>
+    fun getDebit(@Query("userID") userId: Int): Call<List<DebitOrderClass>>
 
     @GET("api/transaction/category/{categoryId}")
     fun getTransactionsByCategory(@Path("categoryId") categoryId: Int): Call<List<TransactionsClass>>
@@ -41,7 +41,7 @@ interface ApiService {
         @GET("api/debitorders/total")
         fun getTotalDebitOrders(): Call<Double> // Assuming the sum is returned as a Float
 
-    @GET("api/debitorders/due/current-month")
-    fun getDueTotal(): Call<Double>
+    @GET("api/DebitOrders/due/current-month")
+    fun getTotalDueForCurrentMonth(): Call<Double>
 
 }

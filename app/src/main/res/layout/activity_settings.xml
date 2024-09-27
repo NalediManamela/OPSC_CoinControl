@@ -103,41 +103,6 @@
     </LinearLayout>
 
     <!-- Change Password Button -->
-    <LinearLayout
-        android:id="@+id/changePasswordLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingVertical="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/modeLayout">
-
-        <!-- Icon -->
-        <ImageView
-            android:id="@+id/changePasswordIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="Change Password Icon"
-            android:src="@drawable/key" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Change Password"
-            android:textSize="16sp" />
-
-        <!-- Arrow -->
-        <ImageView
-            android:id="@+id/changePasswordArrow"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="Arrow"
-            android:src="@drawable/rightarrow" />
-    </LinearLayout>
 
     <!-- Language Button -->
     <LinearLayout
@@ -149,7 +114,7 @@
         android:paddingVertical="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/changePasswordLayout">
+        tools:layout_editor_absoluteY="388dp">
 
         <ImageView
             android:id="@+id/languageIcon"
