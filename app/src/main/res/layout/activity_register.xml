@@ -12,64 +12,110 @@
         android:id="@+id/edtRegPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="100dp"
         android:ems="10"
         android:inputType="text"
         android:text="Password"
-        app:layout_constraintTop_toBottomOf="@+id/edtRegEmail"
-        tools:layout_editor_absoluteX="101dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtRegEmail" />
 
     <EditText
         android:id="@+id/edtRegConfPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="100dp"
         android:ems="10"
         android:inputType="text"
         android:text="Re-Enter Password"
-        app:layout_constraintTop_toBottomOf="@+id/edtRegEmail"
-        tools:layout_editor_absoluteX="100dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtRegPassword" />
 
     <EditText
         android:id="@+id/edtRegUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="102dp"
+        android:layout_marginEnd="1dp"
         android:ems="10"
         android:inputType="text"
         android:text="Username"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/edtRegEmail"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="47dp"
+        android:backgroundTint="#00BCD4"
         android:text="Register"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="636dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/edtRegEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="35dp"
         android:ems="10"
         android:inputType="text"
         android:text="Email Address"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:layout_editor_absoluteX="101dp" />
+        app:layout_constraintStart_toStartOf="@+id/edtRegPassword"
+        app:layout_constraintTop_toBottomOf="@+id/edtRegUserName" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="471dp"
-        android:layout_marginStart="54dp"
-        android:layout_marginEnd="54dp"
-        android:layout_marginBottom="313dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="46dp"
+        android:text="CREATE NEW"
+        android:textColor="#3F51B5"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:text="ACCOUNT"
+        android:textColor="#3F51B5"
+        android:textColorLink="#03A9F4"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="58dp"
+        android:text="Altready Registered?"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtLogin"
+        app:layout_constraintEnd_toEndOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/txtLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="31dp"
+        android:text="Log in here."
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
