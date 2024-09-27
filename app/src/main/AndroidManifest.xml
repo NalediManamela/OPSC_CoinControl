@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,17 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OPSC_CoinControl.NoActionBar"
         tools:targetApi="31">
-
+        
         <activity
             android:name=".Category"
             android:exported="false"
             android:label="@string/title_activity_transactions"
             android:theme="@style/Theme.OPSC_CoinControl.NoActionBar" />
-
         <activity
             android:name=".Register"
             android:exported="false" />
-
         <activity
             android:name=".AddDebitOrder"
             android:exported="false" />
@@ -45,9 +42,8 @@
         <activity
             android:name=".Profile"
             android:exported="false" />
-
         <activity
-            android:name=".MainActivity"
+            android:name=".SSO"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
