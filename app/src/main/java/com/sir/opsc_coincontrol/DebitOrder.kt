@@ -56,7 +56,7 @@ class DebitOrder : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful) {
                         val debitOrders = response.body() ?: emptyList()
-                        debitAdapter = debitAdapter(debitOrders) // Ensure your adapter is properly instantiated
+                        debitAdapter = debitAdapter(debitOrders) // Ensre your adapter is properly instantiated
                         rvDebit.adapter = debitAdapter
                     } else {
                         Toast.makeText(this@DebitOrder, "Error: ${response.code()} - ${response.message()}", Toast.LENGTH_SHORT).show()
