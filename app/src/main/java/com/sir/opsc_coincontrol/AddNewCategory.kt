@@ -1,5 +1,6 @@
 package com.sir.opsc_coincontrol
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -17,6 +18,7 @@ class AddNewCategory : AppCompatActivity() {
     private lateinit var edtCategoryName: EditText
     private lateinit var edtBudget: EditText
     private lateinit var btnAddCategory: Button
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,9 @@ class AddNewCategory : AppCompatActivity() {
         edtCategoryName = findViewById(R.id.edtCategoryName)
         edtBudget = findViewById(R.id.edtBudget)
         btnAddCategory = findViewById(R.id.btnAddCategory)
+
+        // Initialize SharedPreferences
+        sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -43,8 +48,16 @@ class AddNewCategory : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Create the category object
+            // Retrieve the userId from SharedPreferences
+            val userId = sharedPreferences.getInt("userId", -1)
+            if (userId == -1) {
+                Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Create the category object with the userId
             val category = CategoryClass(
+                userID = userId,
                 categoryName = categoryName,
                 budget = budgetCat,
                 amountSpent = 0.0 // Initially zero since the category is new
@@ -53,8 +66,6 @@ class AddNewCategory : AppCompatActivity() {
             // Call the API to add the category
             postCategory(category)
         }
-
-
     }
 
     private fun postCategory(category: CategoryClass) {

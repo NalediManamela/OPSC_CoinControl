@@ -36,12 +36,13 @@ interface ApiService {
     @POST("api/transaction")
     fun postTransaction(@Body transaction: TransactionsClass): Call<TransactionsClass>
 
-
-
-        @GET("api/debitorders/total")
-        fun getTotalDebitOrders(): Call<Double> // Assuming the sum is returned as a Float
+    @GET("api/debitorders/total")
+    fun getTotalDebitOrders(): Call<Double> // Assuming the sum is returned as a Float
 
     @GET("api/DebitOrders/due/current-month")
     fun getTotalDueForCurrentMonth(): Call<Double>
+
+    @POST("api/auth/login")
+    fun loginUser(@Body loginRequest: LoginRequest): Call<LoginResponse>
 
 }

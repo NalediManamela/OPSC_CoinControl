@@ -22,6 +22,11 @@
             android:exported="false"
             android:label="@string/title_activity_transactions"
             android:theme="@style/Theme.OPSC_CoinControl.NoActionBar" />
+
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+
         <activity
             android:name=".AddDebitOrder"
             android:exported="false" />
@@ -32,7 +37,7 @@
             android:name=".Manage"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Settings"
             android:exported="false" />
         <activity
             android:name=".AddNewCategory"
@@ -42,7 +47,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".Settings"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

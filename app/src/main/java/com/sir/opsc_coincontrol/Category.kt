@@ -1,6 +1,8 @@
 package com.sir.opsc_coincontrol
 
+import android.content.Intent
 import android.os.Bundle
+import android.content.SharedPreferences
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +19,8 @@ class Category : AppCompatActivity() {
 
     private lateinit var rvCategories: RecyclerView
     private lateinit var categoryAdapter: CategoryAdapter
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var btnAddNewCategory: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,23 +28,38 @@ class Category : AppCompatActivity() {
         setContentView(R.layout.activity_category)
 
         rvCategories = findViewById(R.id.rvCategories)
+        btnAddNewCategory = findViewById(R.id.btnAddNewCategory)
         rvCategories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        fetchCategories()
+
+
+        sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+
+        // Get the userId from SharedPreferences
+        val userId = sharedPreferences.getInt("userId", -1)
+        if (userId != -1) {
+            fetchCategories(userId) // Call fetchCategories with the userId from SharedPreferences
+        } else {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+        }
+
+        btnAddNewCategory.setOnClickListener {
+            // Navigate to the AddNewCategory activity
+            val intent = Intent(this, AddNewCategory::class.java)
+            startActivity(intent)
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
     }
 
-    private fun fetchCategories() {
-        // Hardcoded UserID for now
-        val userID = 7
 
-        RetrofitClient.instance.getCategoriesByUser(userID).enqueue(object : Callback<List<CategoryClass>> {
+    private fun fetchCategories(userId: Int) {
+        // Use the userId retrieved from SharedPreferences
+        RetrofitClient.instance.getCategoriesByUser(userId).enqueue(object : Callback<List<CategoryClass>> {
             override fun onResponse(call: Call<List<CategoryClass>>, response: Response<List<CategoryClass>>) {
                 if (response.isSuccessful) {
                     val categories = response.body() ?: emptyList()
@@ -59,4 +78,5 @@ class Category : AppCompatActivity() {
             }
         })
     }
+
 }
