@@ -45,5 +45,5 @@ interface ApiService {
     @POST("api/auth/login")
     fun loginUser(@Body loginRequest: LoginRequest): Call<LoginResponse>
     @POST("api/auth/verify-token")
-    fun verifyToken(@Body idToken: String): Call<Void>
+    fun verifyToken(@Body idToken: String): Call<User>
 }

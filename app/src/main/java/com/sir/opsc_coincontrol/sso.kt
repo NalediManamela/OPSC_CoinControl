@@ -12,7 +12,10 @@ import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.Response
 import com.sir.opsc_coincontrol.R
+import retrofit2.Call
+import retrofit2.Callback
 
 class SSO : AppCompatActivity() {
 
@@ -30,9 +33,11 @@ class SSO : AppCompatActivity() {
 
         oneTapClient = Identity.getSignInClient(this)
         signInRequest = BeginSignInRequest.builder()
-            .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
-                .setSupported(true)
-                .build())
+            .setPasswordRequestOptions(
+                BeginSignInRequest.PasswordRequestOptions.builder()
+                    .setSupported(true)
+                    .build()
+            )
             .setGoogleIdTokenRequestOptions(
                 BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
                     .setSupported(true)
@@ -40,7 +45,8 @@ class SSO : AppCompatActivity() {
                     .setServerClientId(getString(R.string.server_client_id))
                     // Only show accounts previously used to sign in.
                     .setFilterByAuthorizedAccounts(true)
-                    .build())
+                    .build()
+            )
             // Automatically sign in when exactly one credential is retrieved.
             .setAutoSelectEnabled(true)
             .build()
@@ -52,7 +58,8 @@ class SSO : AppCompatActivity() {
                     try {
                         startIntentSenderForResult(
                             result.pendingIntent.intentSender, REQ_ONE_TAP,
-                            null, 0, 0, 0, null)
+                            null, 0, 0, 0, null
+                        )
                     } catch (e: IntentSender.SendIntentException) {
                         Log.e(TAG, "Couldn't start One Tap UI: ${e.localizedMessage}")
                     }
@@ -67,7 +74,7 @@ class SSO : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val info : TextView = findViewById(R.id.txtInformation)
+        val info: TextView = findViewById(R.id.txtInformation)
         when (requestCode) {
             REQ_ONE_TAP -> {
                 try {
@@ -75,7 +82,7 @@ class SSO : AppCompatActivity() {
                     val idToken = credential.googleIdToken
                     val username = credential.id
                     val password = credential.password
-info.setText("${username} signed in")
+                    info.setText("${username} signed in")
 
 
                     when {
@@ -83,12 +90,16 @@ info.setText("${username} signed in")
                             // Got an ID token from Google. Use it to authenticate
                             // with your backend.
                             Log.d(TAG, "Got ID token.")
+                            verifyToken(idToken)
+
                         }
+
                         password != null -> {
                             // Got a saved username and password. Use them to authenticate
                             // with your backend.
                             Log.d(TAG, "Got password.")
                         }
+
                         else -> {
                             // Shouldn't happen.
                             Log.d(TAG, "No ID token or password!")
@@ -102,4 +113,23 @@ info.setText("${username} signed in")
         }
     }
 
-}
+    private fun verifyToken(idToken: String) {
+        RetrofitClient.instance.verifyToken(idToken).enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>, response: retrofit2.Response<User>) {
+                if (response.isSuccessful) {
+                    val userResponse = response.body()
+                    Log.d(TAG, "User ID: ${userResponse?.UserId}, User Name: ${userResponse?.Username}, User Email: ${userResponse?.UserEmail}")
+                } else {
+                    Log.e(TAG, "Verification failed: ${response.errorBody()?.string()}")
+                }
+            }
+
+            override fun onFailure(call: Call<User>, t: Throwable) {
+                Log.e(TAG, "Network error: ${t.localizedMessage}")
+            }
+        })
+    }
+
+    }
+
+
