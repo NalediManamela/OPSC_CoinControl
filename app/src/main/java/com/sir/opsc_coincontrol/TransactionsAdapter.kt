@@ -32,7 +32,7 @@ class TransactionsAdapter(
 
         fun bind(transaction: TransactionsClass) {
             tvTransactionName.text = transaction.transaction_Name ?: "No Name"
-            tvTransactionAmount.text = "Amount: R${transaction.transaction_Amount ?: 0.0}"
+            tvTransactionAmount.text = "Amount: $${transaction.transaction_Amount ?: 0.0}"
             tvTransactionDate.text = "Date: ${transaction.date ?: "Unknown"}"
         }
     }
