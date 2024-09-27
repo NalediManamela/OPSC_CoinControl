@@ -24,9 +24,7 @@
         <activity
             android:name=".AddDebitOrder"
             android:exported="false" />
-        <activity
-            android:name=".DebitOrder"
-            android:exported="false" />
+
         <activity
             android:name=".Manage"
             android:exported="false" />
@@ -43,7 +41,7 @@
             android:name=".Settings"
             android:exported="false" />
         <activity
-            android:name=".Transaction"
+            android:name=".DebitOrder"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
