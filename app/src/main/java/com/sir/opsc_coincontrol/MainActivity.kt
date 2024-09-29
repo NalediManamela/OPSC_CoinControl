@@ -160,6 +160,7 @@ class MainActivity : AppCompatActivity() {
                         putString("userName", loginResponse.userName)
                         apply()
                     }
+
                     Toast.makeText(this@MainActivity, "Login successful", Toast.LENGTH_SHORT).show()
                     navigateToCategories()
                 } else {
@@ -188,6 +189,8 @@ class MainActivity : AppCompatActivity() {
                             putString("userName", userResponse.Username)
                             apply()
                         }
+
+                        Log.d(TAG, "User ID stored in SharedPreferences: $userId")
                     }
 
                     // Navigate to the categories screen after successful login

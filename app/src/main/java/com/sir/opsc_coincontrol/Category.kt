@@ -1,8 +1,10 @@
 package com.sir.opsc_coincontrol
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.content.SharedPreferences
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
@@ -37,6 +39,7 @@ class Category : AppCompatActivity() {
         // Get userId from SharedPreferences
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val userId = sharedPreferences.getInt("userId", -1)
+        Log.d(TAG, "Fetched User ID from SharedPreferences: $userId")
 
         // Fetch categories if userId is valid
         if (userId != -1) {
