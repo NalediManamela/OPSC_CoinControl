@@ -10,30 +10,40 @@
     <TextView
         android:id="@+id/txtAddDebitOrder"
         android:layout_width="125dp"
-        android:layout_height="50dp"
+        android:layout_height="51dp"
         android:text="Add Debit Order"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="51dp" />
+        tools:layout_editor_absoluteY="79dp" />
 
     <EditText
-        android:id="@+id/edtDebitName"
-        android:layout_width="wrap_content"
+        android:id="@+id/DebitName"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="145dp" />
+        android:hint="Transaction Name"
+        tools:layout_editor_absoluteY="197dp" />
 
     <EditText
-        android:id="@+id/edtDebitAmount"
-        android:layout_width="wrap_content"
+        android:id="@+id/DebitAmount"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="227dp" />
+        android:hint="Transaction Amount"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="260dp" />
+
+    <EditText
+        android:id="@+id/DebitDate"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:focusable="false"
+        android:hint="Transaction Date"
+        android:inputType="date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.485" />
 </androidx.constraintlayout.widget.ConstraintLayout>

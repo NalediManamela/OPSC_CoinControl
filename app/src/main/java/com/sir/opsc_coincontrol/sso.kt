@@ -17,7 +17,7 @@ import com.sir.opsc_coincontrol.R
 import retrofit2.Call
 import retrofit2.Callback
 
-class SSO : AppCompatActivity() {
+class SSO : AppCompatActivity() {// sso
 
     private lateinit var oneTapClient: SignInClient
     private lateinit var signInRequest: BeginSignInRequest
