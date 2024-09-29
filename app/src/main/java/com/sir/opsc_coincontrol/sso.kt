@@ -3,6 +3,7 @@ package com.sir.opsc_coincontrol
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.IntentSender
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -19,15 +20,20 @@ class SSO : AppCompatActivity() {// sso
 
     private lateinit var oneTapClient: SignInClient
     private lateinit var signInRequest: BeginSignInRequest
+
+    private lateinit var sharedPreferences: SharedPreferences
+
     private lateinit var button: Button  // Declare the button here
     private val REQ_ONE_TAP = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sso)
+        setContentView(R.layout.activity_main)
 
         // Initialize the button after setting the content view
-        button = findViewById(R.id.btnSignin)
+        button = findViewById(R.id.btnSignInWithGoogle)
+
+        sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
 
         oneTapClient = Identity.getSignInClient(this)
         signInRequest = BeginSignInRequest.builder()
@@ -72,7 +78,6 @@ class SSO : AppCompatActivity() {// sso
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val info: TextView = findViewById(R.id.txtInformation)
         when (requestCode) {
             REQ_ONE_TAP -> {
                 try {
@@ -80,7 +85,7 @@ class SSO : AppCompatActivity() {// sso
                     val idToken = credential.googleIdToken
                     val username = credential.id
                     val password = credential.password
-                    info.setText("${username} signed in")
+
 
 
                     when {
@@ -116,7 +121,22 @@ class SSO : AppCompatActivity() {// sso
             override fun onResponse(call: Call<User>, response: retrofit2.Response<User>) {
                 if (response.isSuccessful) {
                     val userResponse = response.body()
+                    val userId = userResponse?.UserId
                     Log.d(TAG, "User ID: ${userResponse?.UserId}, User Name: ${userResponse?.Username}, User Email: ${userResponse?.UserEmail}")
+
+                    if (userId != null) {
+                        sharedPreferences.edit().apply {
+                            putBoolean("isLoggedIn", true)
+                            putInt("userId", userId)
+                            putString("userName", userResponse.Username)
+                            apply()
+                        }
+                    }
+
+                    // Navigate to the categories screen after successful login
+                    if (userId != null) {
+                        navigateToCategories(userId)
+                    }
                 } else {
                     Log.e(TAG, "Verification failed: ${response.errorBody()?.string()}")
                 }
@@ -128,6 +148,13 @@ class SSO : AppCompatActivity() {// sso
         })
     }
 
+    private fun navigateToCategories(userId: Int) {
+        val intent = Intent(this, Category::class.java)
+        intent.putExtra("USER_ID", userId)  // Pass the user ID
+        startActivity(intent)
+        finish()
     }
+
+}
 
 

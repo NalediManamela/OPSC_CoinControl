@@ -17,74 +17,82 @@
         android:text="Don't Have an Account ? "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
 
     <EditText
         android:id="@+id/edtPassword"
-        android:layout_width="0dp"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
         android:ems="10"
         android:inputType="text"
         android:text="Password"
-        app:layout_constraintEnd_toEndOf="@+id/edtEmail"
-        app:layout_constraintStart_toStartOf="@+id/edtEmail"
-        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/edtUserName"
         android:layout_width="214dp"
-        android:layout_height="44dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="374dp"
+        android:layout_marginBottom="23dp"
         android:ems="10"
         android:inputType="text"
         android:text="Username"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/edtEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="134dp"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="11dp"
         android:backgroundTint="@color/Teal"
         android:text="Log in "
         android:textColorLink="#03A9F4"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="574dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btnSignInWithGoogle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
     <EditText
         android:id="@+id/edtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginBottom="210dp"
         android:ems="10"
         android:inputType="text"
         android:text="Email Address"
+        app:layout_constraintBottom_toTopOf="@+id/txtDontHaveAccount"
         app:layout_constraintStart_toStartOf="@+id/edtUserName"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/edtUserName" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
-        android:layout_height="471dp"
+        android:layout_height="0dp"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
-        android:layout_marginBottom="313dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="46dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="43dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="@+id/edtEmail"
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/edtEmail"
         app:srcCompat="@drawable/email" />
 
     <ImageView
@@ -92,32 +100,33 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="374dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="35dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintBottom_toBottomOf="@+id/edtUserName"
         app:layout_constraintEnd_toEndOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="@+id/imageView7"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edtUserName"
         app:srcCompat="@drawable/user2" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="32dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="147dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtDontHaveAccount"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintEnd_toEndOf="@+id/edtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:srcCompat="@drawable/security" />
 
     <Button
         android:id="@+id/btnSignInWithGoogle"
         android:layout_width="163dp"
-        android:layout_height="58dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="17dp"
         android:text="Sign In With Google"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="634dp" /> <!-- Replace with your image source -->
+        app:layout_constraintBottom_toTopOf="@+id/txtDontHaveAccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" /> <!-- Replace with your image source -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

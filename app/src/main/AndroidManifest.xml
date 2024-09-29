@@ -43,7 +43,7 @@
             android:name=".DebitOrder"
             android:exported="false" />
         <activity
-            android:name=".SSO"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
