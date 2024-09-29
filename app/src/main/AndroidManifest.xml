@@ -24,8 +24,9 @@
         <activity
             android:name=".Register"
             android:exported="false" />
-
-
+        <activity
+            android:name=".Transaction"
+            android:exported="false" />
         <activity
             android:name=".Manage"
             android:exported="false" />
@@ -40,6 +41,9 @@
             android:exported="false" />
         <activity
             android:name=".DebitOrder"
+            android:exported="false" />
+        <activity
+            android:name=".SSO"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

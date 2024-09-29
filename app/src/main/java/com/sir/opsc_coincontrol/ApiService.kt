@@ -44,9 +44,13 @@ interface ApiService {
 
     @POST("api/auth/login")
     fun loginUser(@Body loginRequest: LoginRequest): Call<LoginResponse>
+
     @POST("api/auth/verify-token")
     fun verifyToken(@Body idToken: String): Call<User>
 
     @POST("api/DebitOrders")
     fun createDebitOrder(@Body debitOrder: DebitOrderClass): Call<DebitOrderClass>
+
+    @POST("api/auth/register")
+    fun registerUser(@Body registerRequest: RegisterClass): Call<Void>
 }
