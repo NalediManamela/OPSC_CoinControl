@@ -7,34 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".DebitOrder">
 
-    <Button
-        android:id="@+id/btnAddDebit"
-        android:layout_width="0dp"
-        android:layout_height="75dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="Enter How Much Cookies You Want"
-        android:hint="e.g 8"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnCategory"
-        app:srcCompat="@drawable/add" />
-
-    <Button
-        android:id="@+id/btnCategory"
-        android:layout_width="0dp"
-        android:layout_height="79dp"
-        android:layout_marginEnd="221dp"
-        android:layout_marginBottom="17dp"
-        android:contentDescription="Enter How Much Cookies You Want"
-        android:hint="e.g 8"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnAddDebit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/category" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_entries2"
         android:layout_width="0dp"
@@ -51,7 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="DEBIT ORDER"
+        android:textColor="@color/Teal"
+        android:textColorLink="@color/Teal"
         android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,6 +38,7 @@
         android:layout_marginStart="71dp"
         android:layout_marginTop="6dp"
         android:text="SUMMARY:"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/rv_entries2"
         app:layout_constraintTop_toBottomOf="@+id/rv_entries2" />
 
@@ -73,6 +49,7 @@
         android:layout_marginTop="6dp"
         android:layout_marginEnd="31dp"
         android:text="Total:"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/txtTotal"
         app:layout_constraintTop_toBottomOf="@+id/rv_entries2" />
 
@@ -82,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
         android:text="Due"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -103,5 +81,33 @@
         android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/Due"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnCategory"
+        android:layout_width="68dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="188dp"
+        android:layout_marginEnd="220dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddDebit"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:srcCompat="@drawable/category" />
+
+    <ImageButton
+        android:id="@+id/btnAddDebit"
+        android:layout_width="79dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDUE"
+        app:srcCompat="@drawable/add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

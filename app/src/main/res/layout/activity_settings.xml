@@ -12,8 +12,8 @@
 
     <View
         android:id="@+id/view2"
-        android:layout_width="375dp"
-        android:layout_height="70dp"
+        android:layout_width="425dp"
+        android:layout_height="72dp"
         android:layout_marginBottom="56dp"
         android:background="#9CDCE4"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
@@ -49,6 +49,7 @@
         android:text="Dark and Light"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -69,8 +70,8 @@
 
     <Button
         android:id="@+id/aboutAppButton"
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
+        android:layout_width="415dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="6dp"
         android:backgroundTint="@color/Teal"
         android:text="About App"
@@ -79,8 +80,8 @@
 
     <Button
         android:id="@+id/termsButton"
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
+        android:layout_width="420dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="18dp"
         android:backgroundTint="@color/Teal"
         android:text="Terms and Conditions"
@@ -90,13 +91,14 @@
 
     <Button
         android:id="@+id/privacyPolicyButton"
-        android:layout_width="360dp"
-        android:layout_height="wrap_content"
+        android:layout_width="412dp"
+        android:layout_height="47dp"
         android:layout_marginBottom="52dp"
         android:backgroundTint="@color/Teal"
         android:text="Privacy Policy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.153"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -144,22 +146,23 @@
         android:id="@+id/Languageswitch"
         android:layout_width="273dp"
         android:layout_height="26dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="9dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginBottom="100dp"
         android:text="Afrikaans"
         app:layout_constraintBottom_toTopOf="@+id/aboutAppButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.177" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="81dp"
         android:layout_height="62dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="20dp"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/Languageswitch"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/language" />
 
@@ -167,11 +170,12 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="226dp"
         android:text="Language"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/darkLightSwitch"
-        tools:layout_editor_absoluteX="81dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/darkLightSwitch" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
