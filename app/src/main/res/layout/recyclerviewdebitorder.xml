@@ -7,62 +7,80 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="70dp"
+        android:layout_width="0dp"
         android:layout_height="78dp"
-        app:srcCompat="@drawable/moneybag"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="112dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtDate"
+        app:layout_constraintEnd_toStartOf="@+id/tv_entry_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtDate"
+        app:srcCompat="@drawable/moneybag" />
 
     <TextView
         android:id="@+id/tv_entry_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
         android:layout_weight="1"
         android:text="NAME"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="112dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtName"
+        app:layout_constraintEnd_toStartOf="@+id/txtName"
+        app:layout_constraintStart_toEndOf="@+id/imageView3" />
 
     <TextView
         android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="16dp"
         android:text="txtName"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="112dp" />
+        app:layout_constraintBottom_toTopOf="@+id/txtdate"
+        app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+        app:layout_constraintStart_toEndOf="@+id/tv_entry_date" />
 
     <Button
         android:id="@+id/btn_delete"
-        android:layout_width="70dp"
-        android:layout_height="42dp"
+        android:layout_width="89dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="537dp"
+        android:backgroundTint="@color/Teal"
         android:text="Delete"
-        tools:layout_editor_absoluteX="303dp"
-        tools:layout_editor_absoluteY="158dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtName"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
     <TextView
         android:id="@+id/txtDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="152dp"
         android:text="DUE:"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="152dp" />
+        app:layout_constraintStart_toStartOf="@+id/tv_entry_date"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="18dp"
         android:text="txtDate"
-        tools:layout_editor_absoluteX="165dp"
-        tools:layout_editor_absoluteY="150dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtDate"
+        app:layout_constraintEnd_toEndOf="@+id/txtName" />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
         android:text="Paid"
-        tools:layout_editor_absoluteX="312dp"
-        tools:layout_editor_absoluteY="110dp" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_delete"
+        app:layout_constraintEnd_toEndOf="@+id/btn_delete"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
