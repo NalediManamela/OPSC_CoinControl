@@ -33,21 +33,18 @@ class Category : AppCompatActivity() {
         rvCategories = findViewById(R.id.rvCategories)
         btnAddNewCategory = findViewById(R.id.btnAddNewCategory)
         rvCategories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val userId = intent.getIntExtra("USER_ID", -1)
-        sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
 
-        // Check if the activity was started with a refresh intent
+        // Get userId from SharedPreferences
+        sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val userId = sharedPreferences.getInt("userId", -1)
+
+        // Fetch categories if userId is valid
         if (userId != -1) {
-            fetchCategories(userId) // Fetch categories using the user ID from intent
+            fetchCategories(userId)
         } else {
-            // If user ID is not found, fallback to SharedPreferences
-            val storedUserId = sharedPreferences.getInt("userId", -1)
-            if (storedUserId != -1) {
-                fetchCategories(storedUserId) // Fetch categories from SharedPreferences
-            } else {
-                Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
-            }
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
         }
+
         btnAddNewCategory.setOnClickListener {
             val intent = Intent(this, AddNewCategory::class.java)
             startActivity(intent)
@@ -59,6 +56,7 @@ class Category : AppCompatActivity() {
             insets
         }
     }
+
 
 
 
