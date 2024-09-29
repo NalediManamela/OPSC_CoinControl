@@ -1,49 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<!-- res/layout/dialog_add_transaction.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AddDebitOrder">
-
-    <TextView
-        android:id="@+id/txtAddDebitOrder"
-        android:layout_width="125dp"
-        android:layout_height="51dp"
-        android:text="Add Debit Order"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="79dp" />
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <EditText
         android:id="@+id/DebitName"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Transaction Name"
-        tools:layout_editor_absoluteY="197dp" />
+        android:hint="Debit Name" />
 
     <EditText
         android:id="@+id/DebitAmount"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Transaction Amount"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="260dp" />
+        android:hint="Debit Amount"
+        android:inputType="numberDecimal" />
 
     <EditText
-        android:id="@+id/DebitDate"
-        android:layout_width="411dp"
+        android:id="@+id/Due_Date"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:hint="Debit Date"
         android:focusable="false"
-        android:hint="Transaction Date"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.485" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/Date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Due Date"
+        android:focusable="false"
+        android:inputType="date" />
+</LinearLayout>

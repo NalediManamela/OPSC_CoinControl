@@ -13,25 +13,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginBottom="115dp"
         android:text="Category"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/searchBar" />
 
     <ImageButton
         android:id="@+id/btnAddNewCategory"
-        android:layout_width="185dp"
-        android:layout_height="67dp"
-        android:layout_marginEnd="112dp"
-        android:layout_marginBottom="28dp"
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginEnd="126dp"
+        android:layout_marginBottom="41dp"
         android:contentDescription="Enter How Much Cookies You Want"
         android:hint="e.g 8"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/add" />
 
@@ -39,11 +40,13 @@
         android:id="@+id/searchBar"
         android:layout_width="457dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="565dp"
+        android:layout_marginTop="118dp"
+        android:layout_marginBottom="26dp"
         android:hint="Search here ..."
         android:padding="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/categoryLabel"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
@@ -51,26 +54,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginBottom="291dp"
         android:gravity="center"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton"
         app:layout_constraintStart_toStartOf="@+id/rvCategories"
-        app:layout_constraintTop_toTopOf="@+id/rvCategories">
+        app:layout_constraintTop_toBottomOf="@+id/categoryLabel">
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCategories"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="165dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="63dp"
+        android:layout_marginTop="261dp"
+        android:layout_marginBottom="264dp"
         android:background="#EBDBDB"
         android:orientation="horizontal"
         android:scrollbars="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/btnAddNewCategory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryLabel" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="95dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginBottom="41dp"
+        android:contentDescription="debitOrders"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnAddNewCategory"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:srcCompat="@android:drawable/ic_menu_agenda" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

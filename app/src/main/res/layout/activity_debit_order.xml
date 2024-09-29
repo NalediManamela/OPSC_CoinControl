@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".DebitOrder">
 
-    <ImageButton
+    <Button
         android:id="@+id/btnAddDebit"
         android:layout_width="0dp"
         android:layout_height="75dp"
@@ -21,7 +21,7 @@
         app:layout_constraintStart_toEndOf="@+id/btnCategory"
         app:srcCompat="@drawable/add" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btnCategory"
         android:layout_width="0dp"
         android:layout_height="79dp"
