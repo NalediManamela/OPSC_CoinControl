@@ -9,16 +9,6 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/txtForgotPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="27dp"
-        android:text="Forgot Password"
-        app:layout_constraintBottom_toTopOf="@+id/txtDontHaveAccount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
         android:id="@+id/txtDontHaveAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,13 +46,11 @@
         android:id="@+id/btnLogin"
         android:layout_width="134dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="12dp"
         android:backgroundTint="@color/Teal"
         android:text="Log in "
         android:textColorLink="#03A9F4"
-        app:layout_constraintBottom_toTopOf="@+id/txtForgotPassword"
-        app:layout_constraintEnd_toEndOf="@+id/txtForgotPassword" />
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="574dp" />
 
     <EditText
         android:id="@+id/edtEmail"
@@ -117,13 +105,19 @@
         android:id="@+id/imageView7"
         android:layout_width="32dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="147dp"
         app:layout_constraintBottom_toTopOf="@+id/txtDontHaveAccount"
         app:layout_constraintEnd_toEndOf="@+id/edtPassword"
-        app:layout_constraintStart_toEndOf="@+id/txtForgotPassword"
         app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/security" /> <!-- Replace with your image source -->
+        app:srcCompat="@drawable/security" />
+
+    <Button
+        android:id="@+id/btnSignInWithGoogle"
+        android:layout_width="163dp"
+        android:layout_height="58dp"
+        android:text="Sign In With Google"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="634dp" /> <!-- Replace with your image source -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

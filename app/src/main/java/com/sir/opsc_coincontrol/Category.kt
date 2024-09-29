@@ -34,20 +34,25 @@ class Category : AppCompatActivity() {
         btnAddNewCategory = findViewById(R.id.btnAddNewCategory)
         rvCategories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-
-
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
 
-        // Get the userId from SharedPreferences
-        val userId = sharedPreferences.getInt("userId", -1)
-        if (userId != -1) {
-            fetchCategories(userId) // Call fetchCategories with the userId from SharedPreferences
+        // Check if the activity was started with a refresh intent
+        val shouldRefresh = intent.getBooleanExtra("refresh", false)
+        if (shouldRefresh) {
+            val userId = sharedPreferences.getInt("userId", -1)
+            if (userId != -1) {
+                fetchCategories(userId) // Refresh the categories if necessary
+            }
         } else {
-            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            val userId = sharedPreferences.getInt("userId", -1)
+            if (userId != -1) {
+                fetchCategories(userId) // Call fetchCategories with the userId from SharedPreferences
+            } else {
+                Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            }
         }
 
         btnAddNewCategory.setOnClickListener {
-            // Navigate to the AddNewCategory activity
             val intent = Intent(this, AddNewCategory::class.java)
             startActivity(intent)
         }
@@ -60,15 +65,17 @@ class Category : AppCompatActivity() {
     }
 
 
+
     private fun fetchCategories(userId: Int) {
-        // Use the userId retrieved from SharedPreferences
         RetrofitClient.instance.getCategoriesByUser(userId).enqueue(object : Callback<List<CategoryClass>> {
             override fun onResponse(call: Call<List<CategoryClass>>, response: Response<List<CategoryClass>>) {
                 if (response.isSuccessful) {
                     val categories = response.body() ?: emptyList()
                     categoryAdapter = CategoryAdapter(categories) { category ->
                         // Handle category click
-                        Toast.makeText(this@Category, "Clicked: ${category.categoryName}", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@Category, Transaction::class.java)
+                        intent.putExtra("categoryId", category.cat_ID) // Pass the categoryId to Transaction activity
+                        startActivity(intent)
                     }
                     rvCategories.adapter = categoryAdapter
                 } else {

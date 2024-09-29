@@ -1,5 +1,6 @@
 package com.sir.opsc_coincontrol
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
@@ -60,7 +61,8 @@ class AddNewCategory : AppCompatActivity() {
                 userID = userId,
                 categoryName = categoryName,
                 budget = budgetCat,
-                amountSpent = 0.0 // Initially zero since the category is new
+                amountSpent = 0.0, // Initially zero since the category is new
+                average = 0.0
             )
 
             // Call the API to add the category
@@ -80,8 +82,11 @@ class AddNewCategory : AppCompatActivity() {
                     // Clear the input fields after successful addition
                     edtCategoryName.text.clear()
                     edtBudget.text.clear()
-                    // You might want to finish the activity and return to the previous screen
-                    finish()
+
+                    // Create an Intent to navigate back to Category activity
+                    val intent = Intent(this@AddNewCategory, Category::class.java)
+                    intent.putExtra("refresh", true) // Pass a flag to refresh the categories
+                    startActivity(intent)
                 } else {
                     Toast.makeText(
                         this@AddNewCategory,
@@ -101,3 +106,4 @@ class AddNewCategory : AppCompatActivity() {
         })
     }
 }
+

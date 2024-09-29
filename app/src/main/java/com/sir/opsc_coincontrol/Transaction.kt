@@ -2,8 +2,6 @@ package com.sir.opsc_coincontrol
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
@@ -28,7 +26,9 @@ class Transaction : AppCompatActivity() {
     private lateinit var transactionAdapter: TransactionsAdapter
     private lateinit var txtAmountSpent: TextView
     private lateinit var txtAmountBudgeted: TextView
+    private lateinit var txtAverageSpent: TextView
     private lateinit var btnAddTransaction: ImageButton
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,12 +41,19 @@ class Transaction : AppCompatActivity() {
 
         txtAmountBudgeted = findViewById(R.id.txtViewBudgeted)
         txtAmountSpent = findViewById(R.id.txtViewSpent)
+        txtAverageSpent = findViewById(R.id.txtViewAverage)
+
         btnAddTransaction = findViewById(R.id.btnAddTransaction)
 
 
-        val categoryId = 7 // Change this to the actual Category ID you want to test with
-        fetchCategoryDetails(categoryId)
-        fetchTransactions(categoryId)
+        val categoryId = intent.getIntExtra("categoryId", -1)
+        if (categoryId != -1) {
+            fetchTransactions(categoryId) // Fetch transactions for the selected category
+            fetchCategoryDetails(categoryId)
+        } else {
+            Toast.makeText(this, "Invalid Category ID", Toast.LENGTH_SHORT).show()
+            finish() // Close the activity if no valid categoryId is provided
+        }
 
         btnAddTransaction.setOnClickListener {
             showAddTransactionDialog(categoryId)
@@ -112,27 +119,14 @@ class Transaction : AppCompatActivity() {
                         transactionAdapter = TransactionsAdapter(transactions)
                         rvTransactions.adapter = transactionAdapter
                     } else {
-                        Toast.makeText(
-                            this@Transaction,
-                            "Failed to load transactions",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast.makeText(this@Transaction, "Failed to load transactions", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<List<TransactionsClass>>, t: Throwable) {
-                    Toast.makeText(this@Transaction, "Error: ${t.message}", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(this@Transaction, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
-        /*
-        val categoryId = intent.getIntExtra("CATEGORY_ID", -1)
-        if (categoryId != -1) {
-            fetchTransactions(categoryId)
-        } else {
-            Toast.makeText(this, "Invalid Category ID", Toast.LENGTH_SHORT).show()
-        }
-         */
     }
 
     private fun fetchCategoryDetails(categoryId: Int) {
@@ -148,6 +142,7 @@ class Transaction : AppCompatActivity() {
                             // Update the TextViews with AmountSpent and Budget
                             txtAmountSpent.text = "Amount Spent: R${category.amountSpent ?: 0.0}"
                             txtAmountBudgeted.text = "Budget: R${category.budget ?: 0.0}"
+                            txtAverageSpent.text = "Average Spending: R${category.average ?: 0.0}"
                         }
                     } else {
                         Toast.makeText(

@@ -12,8 +12,6 @@ import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.Response
-import com.sir.opsc_coincontrol.R
 import retrofit2.Call
 import retrofit2.Callback
 

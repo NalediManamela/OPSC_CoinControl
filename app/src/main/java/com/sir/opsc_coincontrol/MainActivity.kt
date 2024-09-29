@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
 
+        sharedPreferences.edit().clear().apply()
+
         // Check if user is already logged in
         if (sharedPreferences.getBoolean("isLoggedIn", false)) {
             // Navigate to the categories screen if already logged in

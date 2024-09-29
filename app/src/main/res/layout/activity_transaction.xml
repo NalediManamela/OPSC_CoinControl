@@ -20,6 +20,16 @@
         android:layout_marginBottom="8dp" />
 
     <TextView
+        android:id="@+id/txtViewBudgeted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/lblBudget"
+        app:layout_constraintTop_toTopOf="@+id/lblBudget"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp" />
+
+    <TextView
         android:id="@+id/lblAmountSpent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -31,22 +41,34 @@
         android:layout_marginBottom="8dp" />
 
     <TextView
-        android:id="@+id/txtViewBudgeted"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        app:layout_constraintStart_toEndOf="@+id/lblBudget"
-        app:layout_constraintTop_toTopOf="@+id/lblBudget"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="8dp" />
-
-    <TextView
         android:id="@+id/txtViewSpent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         app:layout_constraintStart_toEndOf="@+id/lblAmountSpent"
         app:layout_constraintTop_toTopOf="@+id/lblAmountSpent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp" />
+
+    <!-- Adding the label and TextView for the average spending -->
+    <TextView
+        android:id="@+id/lblAverageSpent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Average Spending:"
+        app:layout_constraintEnd_toStartOf="@+id/txtViewAverage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblAmountSpent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/txtViewAverage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/lblAverageSpent"
+        app:layout_constraintTop_toTopOf="@+id/lblAverageSpent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="8dp" />
 
@@ -60,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lblAmountSpent"
+        app:layout_constraintTop_toBottomOf="@id/lblAverageSpent"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton

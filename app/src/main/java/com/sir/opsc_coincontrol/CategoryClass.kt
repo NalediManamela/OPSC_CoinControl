@@ -6,5 +6,6 @@ data class CategoryClass(
     var categoryName: String,
     var userID: Int = 0, // This can be 0 or omitted, as the backend will assign it
     var budget: Double,
-    var amountSpent: Double
+    var amountSpent: Double,
+    var average: Double
 )
