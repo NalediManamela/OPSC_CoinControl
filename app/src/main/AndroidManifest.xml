@@ -13,9 +13,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.OPSC_CoinControl.NoActionBar"
-        tools:targetApi="31">
-        
+
+        tools:targetApi="31"
+        android:theme="@style/Theme.AppCompat.DayNight">
+
         <activity
             android:name=".Category"
             android:exported="false"
@@ -28,7 +29,7 @@
             android:name=".Transaction"
             android:exported="false" />
         <activity
-            android:name=".Manage"
+            android:name=".DebitOrder"
             android:exported="false" />
         <activity
             android:name=".Settings"
@@ -41,7 +42,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".DebitOrder"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

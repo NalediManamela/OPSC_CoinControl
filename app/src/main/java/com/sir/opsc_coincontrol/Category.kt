@@ -24,8 +24,8 @@ class Category : AppCompatActivity() {
     private lateinit var categoryAdapter: CategoryAdapter
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var btnAddNewCategory: ImageButton
-
-
+    private lateinit var btnDebit: ImageButton
+    private lateinit var btnSettings: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,6 +33,8 @@ class Category : AppCompatActivity() {
 
         rvCategories = findViewById(R.id.rvCategories)
         btnAddNewCategory = findViewById(R.id.btnAddNewCategory)
+        btnDebit = findViewById(R.id.btnDebitOrders)
+        btnSettings = findViewById(R.id.btnSet)
         rvCategories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         // Get userId from SharedPreferences
@@ -52,7 +54,17 @@ class Category : AppCompatActivity() {
             startActivity(intent)
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.btnAddDebit)) { v, insets ->
+        btnDebit.setOnClickListener {
+            val intent = Intent(this, DebitOrder::class.java)
+            startActivity(intent)
+        }
+
+        btnSettings.setOnClickListener {
+            val intent = Intent(this, Settings::class.java)
+            startActivity(intent)
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets

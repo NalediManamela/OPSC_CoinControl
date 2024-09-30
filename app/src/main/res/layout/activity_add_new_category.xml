@@ -5,7 +5,7 @@
     android:id="@+id/btnAddDebit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background1"
+
     tools:context=".AddNewCategory">
 
     <TextView
@@ -52,28 +52,16 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_select_icon"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/Teal"
-        android:text="SELECT ICON"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtBudget" />
-
-    <Button
         android:id="@+id/btnAddCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
         android:backgroundTint="@color/Teal"
         android:text="ADD"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_select_icon" />
+        tools:layout_editor_absoluteY="549dp" />
 
     <TextView
         android:id="@+id/textView"

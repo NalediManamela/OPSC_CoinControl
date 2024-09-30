@@ -16,10 +16,10 @@ import androidx.appcompat.app.AppCompatDelegate
 class Settings : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var darkModeSwitch: Switch
-    private lateinit var buttonDebitOrder: Button
+
     private lateinit var privacyPolicyButton: Button
     private lateinit var termsButton: Button
-    private lateinit var aboutAppButton: Button// Declare the button
+    private lateinit var aboutAppButton: Button // Declare the button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,39 +29,36 @@ class Settings : AppCompatActivity() {
         // Initialize SharedPreferences
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         darkModeSwitch = findViewById(R.id.darkLightSwitch)
-        buttonDebitOrder = findViewById(R.id.aboutAppButton)
-        privacyPolicyButton= findViewById(R.id.privacyPolicyButton)
-        termsButton= findViewById(R.id.termsButton)
-        aboutAppButton =findViewById(R.id.aboutAppButton)// Initialize the button
+      // Update to correct button ID
+        privacyPolicyButton = findViewById(R.id.privacyPolicyButton)
+        termsButton = findViewById(R.id.termsButton)
+        aboutAppButton = findViewById(R.id.aboutAppButton) // Initialize the button
 
-        // Set the switch based on saved preference
-        darkModeSwitch.isChecked = sharedPreferences.getBoolean("DARK_MODE", false)
+        // Set the switch based on the current night mode
+        darkModeSwitch.isChecked = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
 
         // Set the listener for the switch
         darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
-            val editor = sharedPreferences.edit()
-            editor.putBoolean("DARK_MODE", isChecked)
-            editor.apply()
-            updateTheme(isChecked)
+            AppCompatDelegate.setDefaultNightMode(if (isChecked) {
+                AppCompatDelegate.MODE_NIGHT_YES // Dark mode enabled
+            } else {
+                AppCompatDelegate.MODE_NIGHT_NO // Dark mode disabled
+            })
         }
 
-        // Apply the theme based on saved preference
-        updateTheme(darkModeSwitch.isChecked)
 
-        // Set up the button click listener
-        buttonDebitOrder.setOnClickListener {
-            val intent = Intent(this, DebitOrder::class.java)
-            startActivity(intent) // Start the DebitOrder activity
-        }
-// Set an onClickListener to show the AlertDialog when clicked
+
+        // Set an onClickListener to show the AlertDialog for privacy policy
         privacyPolicyButton.setOnClickListener {
             showPrivacyPolicyDialog()
         }
-        // Set an onClickListener to show the AlertDialog when clicked
+
+        // Set an onClickListener to show the AlertDialog for terms and conditions
         termsButton.setOnClickListener {
             showTermsAndConditionsDialog()
         }
-        // Set an onClickListener to show the AlertDialog when clicked
+
+        // Set an onClickListener to show the AlertDialog for about the app
         aboutAppButton.setOnClickListener {
             showAboutAppDialog()
         }
@@ -73,15 +70,6 @@ class Settings : AppCompatActivity() {
         }
     }
 
-    private fun updateTheme(isDarkMode: Boolean) {
-        // Set the appropriate UI mode
-        val mode = if (isDarkMode) {
-            AppCompatDelegate.MODE_NIGHT_YES // Enable dark mode
-        } else {
-            AppCompatDelegate.MODE_NIGHT_NO // Disable dark mode
-        }
-        AppCompatDelegate.setDefaultNightMode(mode)
-    }
     // Function to display the AlertDialog with Privacy Policy
     private fun showPrivacyPolicyDialog() {
         val privacyPolicyMessage = """
@@ -131,6 +119,7 @@ class Settings : AppCompatActivity() {
             .setPositiveButton("OK", null)
             .show()
     }
+
     // Function to display the AlertDialog with Terms and Conditions
     private fun showTermsAndConditionsDialog() {
         val termsAndConditionsMessage = """
@@ -169,6 +158,7 @@ class Settings : AppCompatActivity() {
             .setNegativeButton("Decline", null)
             .show()
     }
+
     // Function to display the AlertDialog with the app details
     private fun showAboutAppDialog() {
         val aboutAppMessage = """
@@ -181,26 +171,22 @@ class Settings : AppCompatActivity() {
 
             Some of its major features include the very fluent registration and login processes: 
             users can register and log in quickly via Google's SSO service for a secure and easy 
-            entry point into financial management. Once logged in, a user is then able to further 
-            personalize their experience by modifying settings such as selecting notification 
-            preferences and choosing the language preference.
+            entry point into financial management. Once logged in, users can access the full 
+            financial dashboard where they can input their income, expenses, and set budgets. The 
+            app also features useful charts and reports that help visualize the financial situation, 
+            allowing users to make informed decisions.
 
-            On top of this, its robust REST API offers safe storage of transaction data and easy 
-            retrieval of budgetary information and financial reports, ensuring users are always 
-            updated on the most current financial data. Even offline, one can continue recording 
-            expenses against an Offline Mode that synchronizes data once connectivity comes back.
-
-            Real-Time Notifications keep users up to date with warnings when they near budget 
-            limits, when bills are due, or where unusual transactions are detected. The app will 
-            also enable multi-language support in at least English and Afrikaans.
-
-            The app Finance Manager is not a budgeting tool but a personal financial assistant for 
-            every person to easily manage their personal finance anywhere.
+            Our goal is to continuously improve the app by integrating user feedback, so feel free 
+            to share your experience with us!
+            
+            Version: 1.0.0
+            Developer: Your Name
+            Contact: support@financemanagerapp.com
         """.trimIndent()
 
         // Create and show the AlertDialog
         AlertDialog.Builder(this)
-            .setTitle("About Finance Manager")
+            .setTitle("About the App")
             .setMessage(aboutAppMessage)
             .setPositiveButton("OK", null)
             .show()

@@ -2,92 +2,84 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/btnAddDebit"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:backgroundTint="@color/white"
-    tools:context=".Category"
-    tools:ignore="MissingConstraints">
+    tools:context=".Category">
 
+    <!-- Search Bar -->
+    <EditText
+        android:id="@+id/searchBar"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:hint="Search category here ..."
+        android:padding="12dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <!-- Category Label -->
     <TextView
         android:id="@+id/categoryLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="310dp"
         android:text="Category"
         android:textColor="@color/Teal"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="119dp" />
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="64dp" />
 
-    <ImageButton
-        android:id="@+id/btnAddNewCategory"
-        android:layout_width="92dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="204dp"
-        android:layout_marginEnd="168dp"
-        android:backgroundTint="@color/white"
-        android:contentDescription="Enter How Much Cookies You Want"
-        android:hint="e.g 8"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/rvCategories"
-        app:srcCompat="@drawable/add" />
-
-    <EditText
-        android:id="@+id/searchBar"
-        android:layout_width="457dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="31dp"
-        android:hint="Search category here ..."
-        android:padding="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/categoryLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="340dp">
-
-    </LinearLayout>
-
+    <!-- RecyclerView for Categories -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCategories"
         android:layout_width="411dp"
-        android:layout_height="251dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginBottom="204dp"
+        android:layout_height="530dp"
         android:background="@color/white"
         android:orientation="horizontal"
         android:scrollbars="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddNewCategory"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryLabel" />
+        tools:layout_editor_absoluteY="106dp" />
+
+    <!-- Add New Category Button -->
+
+    <!-- Debit Orders ImageButton -->
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="102dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="212dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="34dp"
+        android:id="@+id/btnAddNewCategory"
+        android:layout_width="59dp"
+        android:layout_height="64dp"
         android:backgroundTint="@color/white"
-        android:contentDescription="debitOrders"
+        android:contentDescription="Add New Category"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toStartOf="@+id/btnSet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/add"
+        tools:layout_editor_absoluteY="651dp" />
+
+    <ImageButton
+        android:id="@+id/btnSet"
+        android:layout_width="66dp"
+        android:layout_height="71dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Add New Category"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/setting"
+        tools:layout_editor_absoluteY="648dp" />
+
+    <ImageButton
+        android:id="@+id/btnDebitOrders"
+        android:layout_width="59dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Debit Orders"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvCategories"
+        app:layout_constraintStart_toEndOf="@+id/btnSet"
         app:srcCompat="@drawable/moneybag" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -68,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="37dp"
+        android:layout_marginEnd="35dp"
         android:text="txtTotal"
         app:layout_constraintEnd_toEndOf="@+id/rv_entries2"
         app:layout_constraintTop_toBottomOf="@+id/rv_entries2" />
@@ -85,26 +85,45 @@
     <ImageButton
         android:id="@+id/btnCategory"
         android:layout_width="0dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="191dp"
-        android:layout_marginBottom="15dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="45dp"
         android:backgroundTint="@color/white"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnAdd"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSettings"
+        app:layout_constraintEnd_toStartOf="@+id/btnSettings"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnadd"
         app:srcCompat="@drawable/category" />
 
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="28dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageButton
+        android:id="@+id/btnadd"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Debit Orders"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSettings"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnCategory" />
+        app:layout_constraintStart_toEndOf="@+id/btnSettings"
+        app:layout_constraintTop_toTopOf="@+id/btnSettings"
+        app:srcCompat="@drawable/add" />
+
+    <ImageButton
+        android:id="@+id/btnSettings"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Debit Orders"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnadd"
+        app:layout_constraintStart_toEndOf="@+id/btnCategory"
+        app:srcCompat="@drawable/setting" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
