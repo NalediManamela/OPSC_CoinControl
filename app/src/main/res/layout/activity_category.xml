@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".Category">
 
     <!-- Search Bar -->
     <EditText
         android:id="@+id/searchBar"
-        android:layout_width="379dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Search category here ..."
         android:padding="12dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp" />
 
     <!-- Category Label -->
     <TextView
@@ -27,23 +29,24 @@
         android:textColor="@color/Teal"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="157dp"
-        tools:layout_editor_absoluteY="64dp" />
+        app:layout_constraintTop_toBottomOf="@id/searchBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
     <!-- RecyclerView for Categories -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCategories"
-        android:layout_width="411dp"
-        android:layout_height="530dp"
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:scrollbars="horizontal"
-        tools:layout_editor_absoluteY="106dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:background="#40009688"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddNewCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categoryLabel" />
 
     <!-- Add New Category Button -->
-
-    <!-- Debit Orders ImageButton -->
-
     <ImageButton
         android:id="@+id/btnAddNewCategory"
         android:layout_width="59dp"
@@ -51,35 +54,38 @@
         android:backgroundTint="@color/white"
         android:contentDescription="Add New Category"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/btnSet"
-        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/add"
-        tools:layout_editor_absoluteY="651dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp" />
 
+    <!-- Settings Button -->
     <ImageButton
         android:id="@+id/btnSet"
         android:layout_width="66dp"
         android:layout_height="71dp"
         android:backgroundTint="@color/white"
-        android:contentDescription="Add New Category"
+        android:contentDescription="Settings"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/setting"
-        tools:layout_editor_absoluteY="648dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnAddNewCategory"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp" />
 
+    <!-- Debit Orders Button -->
     <ImageButton
         android:id="@+id/btnDebitOrders"
         android:layout_width="59dp"
         android:layout_height="64dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/white"
         android:contentDescription="Debit Orders"
         android:scaleType="fitCenter"
+        app:srcCompat="@drawable/moneybag"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSet"
-        app:srcCompat="@drawable/moneybag" />
+        app:layout_constraintStart_toEndOf="@id/btnSet"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

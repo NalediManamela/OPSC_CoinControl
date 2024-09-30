@@ -3,6 +3,7 @@ package com.sir.opsc_coincontrol
 
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -53,4 +54,7 @@ interface ApiService {
 
     @POST("api/auth/register")
     fun registerUser(@Body registerRequest: RegisterClass): Call<Void>
+
+    @DELETE("api/categories/delete-category/{id}")
+    fun deleteCategory(@Path("id") categoryId: Int): Call<Void>
 }
