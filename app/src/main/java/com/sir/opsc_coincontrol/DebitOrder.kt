@@ -72,7 +72,7 @@ class DebitOrder : AppCompatActivity() {
         val debitDate = dialogView.findViewById<EditText>(R.id.Due_Date)
         val dueDate = dialogView.findViewById<EditText>(R.id.Date)
 
-        // Set up the date pickers
+
         debitDate.setOnClickListener { showDatePickerDialog(debitDate, false) }
         dueDate.setOnClickListener { showDatePickerDialog(dueDate, true) }
 
@@ -106,9 +106,9 @@ class DebitOrder : AppCompatActivity() {
         val datePickerDialog = DatePickerDialog(
             this,
             { _, selectedYear, selectedMonth, selectedDay ->
-                // Format the selected date based on whether it's debitDate or dueDate
+
                 val dateString = if (isDueDate) {
-                    // Format due date as ISO 8601
+
                     SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
                         .format(Calendar.getInstance().apply {
                             set(selectedYear, selectedMonth, selectedDay)
@@ -131,19 +131,18 @@ class DebitOrder : AppCompatActivity() {
     private inner class DebitOrders {
 
         fun addDebitOrder(name: String, amount: Double, debitDate: String, dueDate: String) {
-            // Create a new DebitOrderClass object with the correct format
+            // DebitOrderClass object
             val newDebitOrder = DebitOrderClass(
-                debit_OrderID = 0,         // New debit order ID should be 0
-                debit_Date = debitDate,    // Should be in yyyy-MM-dd format
-                due_Date = dueDate,        // Should be in ISO 8601 format
+                debit_OrderID = 0,
+                debit_Date = debitDate,
+                due_Date = dueDate,
                 debit_Name = name,
                 debit_Amount = amount,
-                userId,                // Using the actual user ID
-                notifications = emptyList(), // Empty list for notifications
-                user = null                // Null for user as per your example
+                userId,
+                notifications = emptyList(),
+                user = null
             )
 
-            // Log the JSON body for debugging purposes
             val gson = Gson()
             val requestBody = gson.toJson(newDebitOrder)
             Log.d("NewDebitOrderPayload", requestBody)

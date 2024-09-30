@@ -70,7 +70,7 @@ class Register : AppCompatActivity() {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful) {
                         Toast.makeText(this@Register, "Registration successful!", Toast.LENGTH_SHORT).show()
-                        // Navigate to login screen
+
                         val intent = Intent(this@Register, MainActivity::class.java)
                         startActivity(intent)
                         finish()

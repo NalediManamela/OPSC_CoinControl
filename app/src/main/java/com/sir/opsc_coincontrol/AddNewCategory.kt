@@ -30,14 +30,10 @@ class AddNewCategory : AppCompatActivity() {
         edtBudget = findViewById(R.id.edtBudget)
         btnAddCategory = findViewById(R.id.btnAddCategory)
 
-        // Initialize SharedPreferences
+
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.btnAddDebit)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
 
         btnAddCategory.setOnClickListener {
             val categoryName = edtCategoryName.text.toString().trim()
@@ -61,7 +57,7 @@ class AddNewCategory : AppCompatActivity() {
                 userID = userId,
                 categoryName = categoryName,
                 budget = budgetCat,
-                amountSpent = 0.0, // Initially zero since the category is new
+                amountSpent = 0.0,
                 average = 0.0
             )
 
@@ -79,13 +75,13 @@ class AddNewCategory : AppCompatActivity() {
                         "Category added successfully!",
                         Toast.LENGTH_SHORT
                     ).show()
-                    // Clear the input fields after successful addition
+
                     edtCategoryName.text.clear()
                     edtBudget.text.clear()
 
-                    // Create an Intent to navigate back to Category activity
+
                     val intent = Intent(this@AddNewCategory, Category::class.java)
-                    intent.putExtra("refresh", true) // Pass a flag to refresh the categories
+                    intent.putExtra("refresh", true)
                     startActivity(intent)
                 } else {
                     Toast.makeText(

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -39,6 +38,20 @@ class Category : AppCompatActivity() {
         btnDebit = findViewById(R.id.btnDebitOrders)
         btnSettings = findViewById(R.id.btnSet)
         rvCategories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+
+        categoryAdapter = CategoryAdapter(mutableListOf()) { category ->
+            val intent = Intent(this@Category, Transaction::class.java)
+            intent.putExtra("categoryId", category.cat_ID)
+            startActivity(intent)
+        }
+
+        rvCategories.adapter = categoryAdapter
+
+        // Long-click listener for deleting categories
+        categoryAdapter.setOnItemLongClickListener { category ->
+            showDeleteConfirmationDialog(category)
+        }
 
         // Get userId from SharedPreferences
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
@@ -79,19 +92,7 @@ class Category : AppCompatActivity() {
             override fun onResponse(call: Call<List<CategoryClass>>, response: Response<List<CategoryClass>>) {
                 if (response.isSuccessful) {
                     val categories = response.body() ?: emptyList()
-                    categoryAdapter = CategoryAdapter(categories) { category ->
-                        // Handle category click to view transactions
-                        val intent = Intent(this@Category, Transaction::class.java)
-                        intent.putExtra("categoryId", category.cat_ID) // Pass the categoryId to Transaction activity
-                        startActivity(intent)
-                    }
-
-                    rvCategories.adapter = categoryAdapter
-
-                    // Set up the long-click listener for deleting categories
-                    categoryAdapter.setOnItemLongClickListener { category ->
-                        showDeleteConfirmationDialog(category)
-                    }
+                    categoryAdapter.updateCategories(categories)
                 } else {
                     Toast.makeText(this@Category, "Failed to fetch categories", Toast.LENGTH_SHORT).show()
                 }
@@ -108,7 +109,7 @@ class Category : AppCompatActivity() {
             .setTitle("Delete Category")
             .setMessage("Are you sure you want to delete ${category.categoryName}?")
             .setPositiveButton("Yes") { _, _ ->
-                deleteCategory(category.cat_ID) // Replace with the correct property for category ID
+                deleteCategory(category.cat_ID)
             }
             .setNegativeButton("No", null)
             .show()
@@ -119,9 +120,10 @@ class Category : AppCompatActivity() {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@Category, "Category and its transactions deleted successfully", Toast.LENGTH_SHORT).show()
-                    // Refresh the category list after deletion
-                    val userId = sharedPreferences.getInt("userId", -1)
-                    if (userId != -1) fetchCategories(userId)
+
+                    val updatedCategories = categoryAdapter.getCategories().filter { it.cat_ID != categoryId }
+                    categoryAdapter.updateCategories(updatedCategories)
+
                 } else {
                     Toast.makeText(this@Category, "Failed to delete category and its transactions", Toast.LENGTH_SHORT).show()
                 }

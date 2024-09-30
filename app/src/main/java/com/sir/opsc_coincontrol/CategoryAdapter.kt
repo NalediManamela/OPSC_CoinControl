@@ -9,11 +9,11 @@ import com.sir.opsc_coincontrol.CategoryClass
 import com.sir.opsc_coincontrol.R
 
 class CategoryAdapter(
-    private val categories: List<CategoryClass>,
+    private var categories: MutableList<CategoryClass>,  // Changed to var and MutableList
     private val onItemClick: (CategoryClass) -> Unit
 ) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
-    // Variable to hold the long-click listener
+    // Long-click listener
     private var onItemLongClickListener: ((CategoryClass) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
@@ -34,6 +34,18 @@ class CategoryAdapter(
         onItemLongClickListener = listener
     }
 
+    // Method to return the current list of categories
+    fun getCategories(): List<CategoryClass> {
+        return categories
+    }
+
+    // Method to update the adapter's categories list
+    fun updateCategories(newCategories: List<CategoryClass>) {
+        categories.clear()
+        categories.addAll(newCategories)
+        notifyDataSetChanged()
+    }
+
     class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvCategoryName: TextView = itemView.findViewById(R.id.tvCategoryName)
 
@@ -48,10 +60,9 @@ class CategoryAdapter(
                 onItemClick(category)
             }
 
-            // Set up long-click listener
             itemView.setOnLongClickListener {
                 onItemLongClickListener?.invoke(category)
-                true // Return true to indicate the click was handled
+                true
             }
         }
     }

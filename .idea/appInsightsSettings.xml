@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.sir.opsc_coincontrol" />
+                  <option name="mobileSdkAppId" value="1:472856391435:android:f298b362b2073a8755bc0e" />
+                  <option name="projectId" value="opsc-coincontrol" />
+                  <option name="projectNumber" value="472856391435" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

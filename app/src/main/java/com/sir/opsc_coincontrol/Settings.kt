@@ -19,46 +19,47 @@ class Settings : AppCompatActivity() {
 
     private lateinit var privacyPolicyButton: Button
     private lateinit var termsButton: Button
-    private lateinit var aboutAppButton: Button // Declare the button
+    private lateinit var aboutAppButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_settings)
 
-        // Initialize SharedPreferences
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         darkModeSwitch = findViewById(R.id.darkLightSwitch)
-      // Update to correct button ID
+
+
         privacyPolicyButton = findViewById(R.id.privacyPolicyButton)
         termsButton = findViewById(R.id.termsButton)
-        aboutAppButton = findViewById(R.id.aboutAppButton) // Initialize the button
+        aboutAppButton = findViewById(R.id.aboutAppButton)
 
-        // Set the switch based on the current night mode
+
         darkModeSwitch.isChecked = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
 
         // Set the listener for the switch
         darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
             AppCompatDelegate.setDefaultNightMode(if (isChecked) {
-                AppCompatDelegate.MODE_NIGHT_YES // Dark mode enabled
+                AppCompatDelegate.MODE_NIGHT_YES
             } else {
-                AppCompatDelegate.MODE_NIGHT_NO // Dark mode disabled
+                AppCompatDelegate.MODE_NIGHT_NO
             })
         }
 
 
 
-        // Set an onClickListener to show the AlertDialog for privacy policy
+
         privacyPolicyButton.setOnClickListener {
             showPrivacyPolicyDialog()
         }
 
-        // Set an onClickListener to show the AlertDialog for terms and conditions
+
         termsButton.setOnClickListener {
             showTermsAndConditionsDialog()
         }
 
-        // Set an onClickListener to show the AlertDialog for about the app
+
         aboutAppButton.setOnClickListener {
             showAboutAppDialog()
         }

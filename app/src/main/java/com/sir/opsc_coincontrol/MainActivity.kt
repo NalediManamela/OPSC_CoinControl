@@ -28,24 +28,21 @@ class MainActivity : AppCompatActivity() {
     private lateinit var txtDontHaveAccount: TextView
     private lateinit var oneTapClient: SignInClient
     private lateinit var signInRequest: BeginSignInRequest
-    private lateinit var button: Button  // Declare the button for Google sign-in
+    private lateinit var button: Button
     private val REQ_ONE_TAP = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize views
         edtEmail = findViewById(R.id.edtEmail)
         edtPassword = findViewById(R.id.edtPassword)
         btnLogin = findViewById(R.id.btnLogin)
         txtDontHaveAccount = findViewById(R.id.txtDontHaveAccount)
         button = findViewById(R.id.btnSignInWithGoogle)
 
-        // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
 
-        // Clear SharedPreferences for testing; remove this in production
         sharedPreferences.edit().clear().apply()
 
         // Check if user is already logged in
@@ -53,7 +50,6 @@ class MainActivity : AppCompatActivity() {
             navigateToCategories()
         }
 
-        // Set up login button click listener
         btnLogin.setOnClickListener {
             val email = edtEmail.text.toString().trim()
             val password = edtPassword.text.toString().trim()
@@ -65,7 +61,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Set OnClickListener for txtDontHaveAccount
         txtDontHaveAccount.setOnClickListener {
             val intent = Intent(this, Register::class.java)
             startActivity(intent)
@@ -89,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             .setAutoSelectEnabled(true)
             .build()
 
-        // Set the onClickListener for the Google sign-in button
+
         button.setOnClickListener {
             oneTapClient.beginSignIn(signInRequest)
                 .addOnSuccessListener(this) { result ->
@@ -113,7 +108,7 @@ class MainActivity : AppCompatActivity() {
 
         when (requestCode) {
             REQ_ONE_TAP -> {
-                if (resultCode == RESULT_OK && data != null) { // Check for result OK and non-null data
+                if (resultCode == RESULT_OK && data != null) {
                     try {
                         val credential = oneTapClient.getSignInCredentialFromIntent(data)
                         val idToken = credential.googleIdToken
@@ -153,6 +148,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful && response.body() != null) {
                     val loginResponse = response.body()!!
+
                     // Save user details in SharedPreferences
                     sharedPreferences.edit().apply {
                         putBoolean("isLoggedIn", true)

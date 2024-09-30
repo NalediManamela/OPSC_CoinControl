@@ -8,7 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".Category">
 
-    <!-- Search Bar -->
 
     <!-- Category Label -->
     <TextView
@@ -29,7 +28,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        android:background="#40009688"
         app:layout_constraintBottom_toTopOf="@+id/btnAddNewCategory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

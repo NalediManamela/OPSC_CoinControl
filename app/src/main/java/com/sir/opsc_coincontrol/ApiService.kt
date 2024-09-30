@@ -10,15 +10,14 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
-    // Define the POST request to create a new category
+
     @POST("api/categories")
     fun postCategory(@Body category: CategoryClass): Call<CategoryClass>
 
-    // Define a GET request to fetch all categories for the user
+
     @GET("api/categories")
     fun getCategories(): Call<List<CategoryClass>>
 
-    // Define a GET request to fetch a single category by ID
     @GET("api/categories/{id}")
     fun getCategoryById(@Path("id") id: Int): Call<CategoryClass>
 
@@ -38,7 +37,7 @@ interface ApiService {
     fun postTransaction(@Body transaction: TransactionsClass): Call<TransactionsClass>
 
     @GET("api/debitorders/total")
-    fun getTotalDebitOrders(): Call<Double> // Assuming the sum is returned as a Float
+    fun getTotalDebitOrders(): Call<Double>
 
     @GET("api/DebitOrders/due/current-month")
     fun getTotalDueForCurrentMonth(): Call<Double>
