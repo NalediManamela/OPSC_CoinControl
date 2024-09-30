@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,7 +38,7 @@ class DebitOrder : AppCompatActivity() {
 
         txtDue = findViewById(R.id.txtDUE)
         txtTotal = findViewById(R.id.txtTotal)
-        btnAddDebitOrder = findViewById(R.id.btnAddDebit)
+        btnAddDebitOrder = findViewById(R.id.btnAdd)
 
         val userID = 7 // Replace with actual Category ID or user ID
         fetchDebitOrders(userID)
@@ -48,7 +49,7 @@ class DebitOrder : AppCompatActivity() {
             showAddDebitOrderDialog()
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.btnAddDebit)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -63,8 +64,8 @@ class DebitOrder : AppCompatActivity() {
         val dueDate = dialogView.findViewById<EditText>(R.id.Date)
 
         // Set up the date pickers
-        debitDate.setOnClickListener { showDatePickerDialog(debitDate) }
-        dueDate.setOnClickListener { showDatePickerDialog(dueDate) }
+        debitDate.setOnClickListener { showDatePickerDialog(debitDate, false) }
+        dueDate.setOnClickListener { showDatePickerDialog(dueDate, true) }
 
         val dialog = AlertDialog.Builder(this)
             .setTitle("Add Debit Order")
@@ -87,7 +88,7 @@ class DebitOrder : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun showDatePickerDialog(editText: EditText) {
+    private fun showDatePickerDialog(editText: EditText, isDueDate: Boolean) {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
@@ -96,7 +97,20 @@ class DebitOrder : AppCompatActivity() {
         val datePickerDialog = DatePickerDialog(
             this,
             { _, selectedYear, selectedMonth, selectedDay ->
-                val dateString = "$selectedDay/${selectedMonth + 1}/$selectedYear"
+                // Format the selected date based on whether it's debitDate or dueDate
+                val dateString = if (isDueDate) {
+                    // Format due date as ISO 8601
+                    SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US)
+                        .format(Calendar.getInstance().apply {
+                            set(selectedYear, selectedMonth, selectedDay)
+                        }.time)
+                } else {
+                    // Format debit date as yyyy-MM-dd
+                    SimpleDateFormat("yyyy-MM-dd", Locale.US)
+                        .format(Calendar.getInstance().apply {
+                            set(selectedYear, selectedMonth, selectedDay)
+                        }.time)
+                }
                 editText.setText(dateString)
             },
             year, month, day
@@ -106,18 +120,22 @@ class DebitOrder : AppCompatActivity() {
     }
 
     private fun addDebitOrder(name: String, amount: Double, debitDate: String, dueDate: String) {
-        // Convert string dates to the required formats
-        val formattedDebitDate = debitDate // Keep it as "yyyy-MM-dd"
-        val formattedDueDate = dueDate.replace("/", "-") + "T17:53:31.426Z" // Adjust the time as needed
-
-        // Create a new DebitOrderClass object
+        // Create a new DebitOrderClass object with the correct format
         val newDebitOrder = DebitOrderClass(
+            debit_OrderID = 0,         // New debit order ID should be 0
+            debit_Date = debitDate,    // Should be in yyyy-MM-dd format
+            due_Date = dueDate,        // Should be in ISO 8601 format
             debit_Name = name,
             debit_Amount = amount,
-            userID = 7, // Set the user ID here if needed
-            debit_Date = formattedDebitDate,
-            Due_Date = formattedDueDate
+            userID = 7,                // Replace with actual userID
+            notifications = emptyList(), // Empty list for notifications
+            user = null                // Null for user as per your example
         )
+
+        // Log the JSON body for debugging purposes
+        val gson = Gson()
+        val requestBody = gson.toJson(newDebitOrder)
+        Log.d("NewDebitOrderPayload", requestBody)
 
         // Send the new debit order to the server
         RetrofitClient.instance.createDebitOrder(newDebitOrder)
@@ -127,17 +145,19 @@ class DebitOrder : AppCompatActivity() {
                         Toast.makeText(this@DebitOrder, "Debit order added successfully", Toast.LENGTH_SHORT).show()
                         fetchDebitOrders(7) // Refresh the list with the user ID
                     } else {
+                        Log.e("Error", "Error: ${response.code()} - ${response.message()}")
                         Toast.makeText(this@DebitOrder, "Error: ${response.code()} - ${response.message()}", Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<DebitOrderClass>, t: Throwable) {
+                    Log.e("Error", "Failed: ${t.message}")
                     Toast.makeText(this@DebitOrder, "Failed to add debit order: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
     }
 
-    // Fetch debit orders from the API
+
     private fun fetchDebitOrders(userID: Int) {
         RetrofitClient.instance.getDebit(userID)
             .enqueue(object : Callback<List<DebitOrderClass>> {

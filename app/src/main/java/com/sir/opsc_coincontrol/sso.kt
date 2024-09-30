@@ -122,13 +122,13 @@ class SSO : AppCompatActivity() {// sso
                 if (response.isSuccessful) {
                     val userResponse = response.body()
                     val userId = userResponse?.UserId
-                    Log.d(TAG, "User ID: ${userResponse?.UserId}, User Name: ${userResponse?.Username}, User Email: ${userResponse?.UserEmail}")
+                    Log.d(TAG, "User ID: ${userResponse?.UserId}, User Name: ${userResponse?.UserName}, User Email: ${userResponse?.UserEmail}")
 
                     if (userId != null) {
                         sharedPreferences.edit().apply {
                             putBoolean("isLoggedIn", true)
                             putInt("userId", userId)
-                            putString("userName", userResponse.Username)
+                            putString("userName", userResponse.UserName)
                             apply()
                         }
                     }

@@ -179,22 +179,17 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<User>, response: retrofit2.Response<User>) {
                 if (response.isSuccessful) {
                     val userResponse = response.body()
-                    val userId = userResponse?.UserId
-                    Log.d(TAG, "User ID: ${userResponse?.UserId}, User Name: ${userResponse?.Username}, User Email: ${userResponse?.UserEmail}")
+                    Log.d(TAG, "User ID: ${userResponse?.UserId}, User Name: ${userResponse?.UserName}, User Email: ${userResponse?.UserEmail}")
 
-                    if (userId != null) {
+                    if (userResponse?.UserId != null) {
                         sharedPreferences.edit().apply {
                             putBoolean("isLoggedIn", true)
-                            putInt("userId", userId)
-                            putString("userName", userResponse.Username)
+                            putInt("userId", userResponse.UserId)
+                            putString("userName", userResponse.UserName)
                             apply()
                         }
 
-                        Log.d(TAG, "User ID stored in SharedPreferences: $userId")
-                    }
-
-                    // Navigate to the categories screen after successful login
-                    if (userId != null) {
+                        Log.d(TAG, "User ID stored in SharedPreferences: ${userResponse.UserId}")
                         navigateToCategories()
                     }
                 } else {
