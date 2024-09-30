@@ -118,12 +118,12 @@ class Category : AppCompatActivity() {
         RetrofitClient.instance.deleteCategory(categoryId).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
-                    Toast.makeText(this@Category, "Category deleted successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Category, "Category and its transactions deleted successfully", Toast.LENGTH_SHORT).show()
                     // Refresh the category list after deletion
                     val userId = sharedPreferences.getInt("userId", -1)
                     if (userId != -1) fetchCategories(userId)
                 } else {
-                    Toast.makeText(this@Category, "Failed to delete category", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Category, "Failed to delete category and its transactions", Toast.LENGTH_SHORT).show()
                 }
             }
 

@@ -9,16 +9,6 @@
     tools:context=".Category">
 
     <!-- Search Bar -->
-    <EditText
-        android:id="@+id/searchBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Search category here ..."
-        android:padding="12dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp" />
 
     <!-- Category Label -->
     <TextView
@@ -29,10 +19,9 @@
         android:textColor="@color/Teal"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/searchBar"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="80dp" />
 
     <!-- RecyclerView for Categories -->
     <androidx.recyclerview.widget.RecyclerView

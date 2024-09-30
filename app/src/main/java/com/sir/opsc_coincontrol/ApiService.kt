@@ -57,4 +57,7 @@ interface ApiService {
 
     @DELETE("api/categories/delete-category/{id}")
     fun deleteCategory(@Path("id") categoryId: Int): Call<Void>
+
+    @DELETE("api/transaction/{id}")
+    fun deleteTransaction(@Path("id") transactionId: Int): Call<Unit>
 }

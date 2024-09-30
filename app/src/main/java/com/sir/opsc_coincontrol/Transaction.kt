@@ -116,7 +116,15 @@ class Transaction : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful) {
                         val transactions = response.body() ?: emptyList()
-                        transactionAdapter = TransactionsAdapter(transactions)
+                        transactionAdapter = TransactionsAdapter(transactions) { transaction ->
+                            // Handle transaction click (if any action is needed)
+                        }
+
+                        // Set the long-click listener for deleting transactions
+                        transactionAdapter.setOnItemLongClickListener { transaction ->
+                            showDeleteTransactionConfirmationDialog(transaction)
+                        }
+
                         rvTransactions.adapter = transactionAdapter
                     } else {
                         Toast.makeText(this@Transaction, "Failed to load transactions", Toast.LENGTH_SHORT).show()
@@ -124,6 +132,42 @@ class Transaction : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<List<TransactionsClass>>, t: Throwable) {
+                    Toast.makeText(this@Transaction, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
+    private fun showDeleteTransactionConfirmationDialog(transaction: TransactionsClass) {
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setTitle("Delete Transaction")
+        dialogBuilder.setMessage("Are you sure you want to delete this transaction?")
+
+        dialogBuilder.setPositiveButton("Delete") { _, _ ->
+            deleteTransaction(transaction)
+        }
+
+        dialogBuilder.setNegativeButton("Cancel") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        val dialog = dialogBuilder.create()
+        dialog.show()
+    }
+
+    private fun deleteTransaction(transaction: TransactionsClass) {
+        RetrofitClient.instance.deleteTransaction(transaction.transaction_ID)
+            .enqueue(object : Callback<Unit> {
+                override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@Transaction, "Transaction deleted successfully!", Toast.LENGTH_SHORT).show()
+                        // Refresh the transaction list after deletion
+                        transaction.cat_ID?.let { fetchTransactions(it) }
+                    } else {
+                        Toast.makeText(this@Transaction, "Failed to delete transaction", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Unit>, t: Throwable) {
                     Toast.makeText(this@Transaction, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
