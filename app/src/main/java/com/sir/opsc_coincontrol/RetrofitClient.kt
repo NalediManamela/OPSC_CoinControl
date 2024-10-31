@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "https://prgopscapi.azurewebsites.net/" // Replace with your actual backend URL
+    private const val BASE_URL = "https://prgapi20241031145703.azurewebsites.net/" // Replace with your actual backend URL
 
     val instance: ApiService by lazy {
         val retrofit = Retrofit.Builder()
