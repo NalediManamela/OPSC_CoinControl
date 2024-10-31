@@ -1,6 +1,7 @@
 package com.sir.opsc_coincontrol
 
 import android.app.DatePickerDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
@@ -35,6 +36,8 @@ class Transaction : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_transaction)
+
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         rvTransactions = findViewById(R.id.rvTransactions)
         rvTransactions.layoutManager = LinearLayoutManager(this)
@@ -127,7 +130,7 @@ class Transaction : AppCompatActivity() {
 
                         rvTransactions.adapter = transactionAdapter
                     } else {
-                        Toast.makeText(this@Transaction, "Failed to load transactions", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@Transaction, "No transactions", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -187,6 +190,16 @@ class Transaction : AppCompatActivity() {
                             txtAmountSpent.text = "Amount Spent: R${category.amountSpent ?: 0.0}"
                             txtAmountBudgeted.text = "Budget: R${category.budget ?: 0.0}"
                             txtAverageSpent.text = "Average Spending: R${category.average ?: 0.0}"
+
+                            val amountSpent = category.amountSpent ?: 0.0
+                            val budget = category.budget ?: 0.0
+
+                            // Set the color to red if amount spent is greater than the budget
+                            if (amountSpent > budget) {
+                                txtAmountBudgeted.setTextColor(Color.parseColor("#FF0000"))  // Assuming you have a red color in your resources
+                            } else {
+                                txtAmountBudgeted.setTextColor(getColor(android.R.color.black)) // Default color
+                            }
                         }
                     } else {
                         Toast.makeText(

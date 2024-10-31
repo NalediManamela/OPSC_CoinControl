@@ -8,6 +8,15 @@
     android:padding="16dp"
     tools:context=".Transaction">
 
+    <View
+        android:id="@+id/barTransactions"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:background="#9CDCE4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/lblBudget"
         android:layout_width="0dp"

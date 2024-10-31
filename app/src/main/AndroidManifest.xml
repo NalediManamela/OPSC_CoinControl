@@ -24,26 +24,34 @@
             android:theme="@style/Theme.OPSC_CoinControl.NoActionBar" />
         <activity
             android:name=".Register"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.OPSC_CoinControl.NoActionBar" />
+
         <activity
             android:name=".Transaction"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.OPSC_CoinControl.NoActionBar" />
         <activity
             android:name=".DebitOrder"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.OPSC_CoinControl.NoActionBar" />
         <activity
             android:name=".Settings"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.OPSC_CoinControl.NoActionBar" />
         <activity
             android:name=".AddNewCategory"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.OPSC_CoinControl.NoActionBar" />
         <activity
             android:name=".Profile"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.OPSC_CoinControl.NoActionBar" />
 
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.OPSC_CoinControl.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

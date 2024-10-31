@@ -1,181 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/btnAddDebit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Settings">
 
     <!-- Mode Toggle (Dark & Light) -->
-
-
     <View
-        android:id="@+id/view2"
-        android:layout_width="425dp"
+        android:id="@+id/barSettings"
+        android:layout_width="0dp"
         android:layout_height="72dp"
-        android:layout_marginBottom="56dp"
         android:background="#9CDCE4"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- Label -->
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="237dp"
-        android:layout_marginBottom="6dp"
-        android:layout_weight="1"
-        android:text="Mode"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/darkLightSwitch"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
-
-    <Switch
-        android:id="@+id/darkLightSwitch"
-        android:layout_width="262dp"
-        android:layout_height="17dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="22dp"
-        android:text="Dark and Light"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Language"
-        android:textSize="16sp" />
-
-
-    <!-- About App -->
-
-    <!-- Terms & Conditions -->
-
-    <!-- Privacy Policy -->
-
-    <Button
-        android:id="@+id/aboutAppButton"
-        android:layout_width="415dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="6dp"
-        android:backgroundTint="@color/Teal"
-        android:text="About App"
-        app:layout_constraintBottom_toTopOf="@+id/termsButton"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/termsButton"
-        android:layout_width="420dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="18dp"
-        android:backgroundTint="@color/Teal"
-        android:text="Terms and Conditions"
-        app:layout_constraintBottom_toTopOf="@+id/privacyPolicyButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/privacyPolicyButton"
-        android:layout_width="412dp"
-        android:layout_height="47dp"
-        android:layout_marginBottom="52dp"
-        android:backgroundTint="@color/Teal"
-        android:text="Privacy Policy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.153"
-        app:layout_constraintStart_toStartOf="parent" />
-
+    <!-- Settings Header -->
     <TextView
         android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-40dp"
-        android:layout_marginEnd="-240dp"
-        android:layout_marginBottom="-10dp"
         android:text="Settings"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
-        app:layout_constraintEnd_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp" />
 
-    <ImageButton
-        android:id="@+id/btnBack"
-        android:layout_width="37dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="-50dp"
-        android:layout_marginEnd="-50dp"
-        android:background="#9CDCE4"
-        android:fitsSystemWindows="false"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/view2"
-        app:layout_constraintEnd_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        app:srcCompat="@drawable/arrow" />
+    <!-- Dark Mode Toggle Label -->
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mode"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/barSettings"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp" />
 
+    <!-- Dark Mode Toggle Switch -->
+    <Switch
+        android:id="@+id/darkLightSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dark and Light"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        android:layout_marginTop="8dp" />
+
+    <!-- Dark/Light Mode Icon -->
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="80dp"
         android:layout_height="62dp"
-        android:layout_marginTop="104dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="120dp"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barSettings"
         app:srcCompat="@drawable/darkandlight" />
 
+    <!-- Language Label -->
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Language"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/darkLightSwitch"
+        app:layout_constraintStart_toStartOf="@+id/darkLightSwitch"
+        android:layout_marginTop="16dp" />
+
+    <!-- Language Switch -->
     <Switch
         android:id="@+id/Languageswitch"
-        android:layout_width="273dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Afrikaans"
-        app:layout_constraintBottom_toTopOf="@+id/aboutAppButton"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.177" />
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        android:layout_marginTop="8dp" />
+
+    <!-- Language Icon -->
+
+    <!-- About App Button -->
+
+    <!-- Terms and Conditions Button -->
+
+    <!-- Privacy Policy Button -->
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="81dp"
         android:layout_height="62dp"
-        android:layout_marginTop="46dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="120dp"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/language" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/aboutAppButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="226dp"
-        android:text="Language"
-        android:textStyle="bold"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="80dp"
+        android:backgroundTint="@color/Teal"
+        android:text="About App"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/darkLightSwitch" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Languageswitch" />
 
+    <Button
+        android:id="@+id/termsButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="@color/Teal"
+        android:text="Terms and Conditions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.218"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutAppButton" />
+
+    <Button
+        android:id="@+id/privacyPolicyButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="@color/Teal"
+        android:text="Privacy Policy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/termsButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

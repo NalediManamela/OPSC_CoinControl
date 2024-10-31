@@ -1,116 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/btnAddDebit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DebitOrder">
 
+    <!-- RecyclerView for debit entries -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_entries2"
         android:layout_width="0dp"
         android:layout_height="298dp"
         android:layout_marginTop="142dp"
-        android:layout_weight="1"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/barDebitOrders"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:background="#9CDCE4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/lblDebit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="DEBIT ORDER"
-        android:textColor="@color/Teal"
-        android:textColorLink="@color/Teal"
-        android:textSize="34sp"
+        android:text="Debit Orders"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <!-- Summary TextView -->
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="71dp"
         android:layout_marginTop="6dp"
         android:text="SUMMARY:"
         android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/rv_entries2"
         app:layout_constraintStart_toStartOf="@+id/rv_entries2"
-        app:layout_constraintTop_toBottomOf="@+id/rv_entries2" />
+        android:layout_marginStart="71dp" />
 
+    <!-- Total Label TextView -->
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="31dp"
         android:text="Total:"
         android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/rv_entries2"
         app:layout_constraintEnd_toStartOf="@+id/txtTotal"
-        app:layout_constraintTop_toBottomOf="@+id/rv_entries2" />
+        android:layout_marginEnd="31dp" />
 
+    <!-- Due Label TextView -->
     <TextView
         android:id="@+id/Due"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="34dp"
+        android:layout_height="23dp"
         android:layout_marginTop="31dp"
-        android:text="Due"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
+    <!-- Total Amount TextView -->
     <TextView
         android:id="@+id/txtTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="35dp"
         android:text="txtTotal"
+        app:layout_constraintTop_toBottomOf="@+id/rv_entries2"
         app:layout_constraintEnd_toEndOf="@+id/rv_entries2"
-        app:layout_constraintTop_toBottomOf="@+id/rv_entries2" />
+        android:layout_marginEnd="35dp" />
 
+    <!-- Due Amount TextView -->
     <TextView
         android:id="@+id/txtDUE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
         android:text="TextView"
         app:layout_constraintBaseline_toBaselineOf="@+id/Due"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="28dp" />
 
+    <!-- Category Button -->
     <ImageButton
         android:id="@+id/btnCategory"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="45dp"
         android:backgroundTint="@color/white"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSettings"
-        app:layout_constraintEnd_toStartOf="@+id/btnSettings"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnSettings"
         app:layout_constraintTop_toTopOf="@+id/btnadd"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSettings"
         app:srcCompat="@drawable/category" />
 
+    <!-- Add Button -->
     <ImageButton
         android:id="@+id/btnadd"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="15dp"
         android:backgroundTint="@color/white"
         android:contentDescription="Debit Orders"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSettings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnSettings"
         app:layout_constraintTop_toTopOf="@+id/btnSettings"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSettings"
+        android:layout_marginEnd="15dp"
         app:srcCompat="@drawable/add" />
 
+    <!-- Settings Button -->
     <ImageButton
         android:id="@+id/btnSettings"
         android:layout_width="0dp"
@@ -120,10 +134,9 @@
         android:backgroundTint="@color/white"
         android:contentDescription="Debit Orders"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnadd"
         app:layout_constraintStart_toEndOf="@+id/btnCategory"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/setting" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,6 +26,8 @@ class Register : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_register)
 
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
         edtRegUserName = findViewById(R.id.edtRegUserName)
         edtRegEmail = findViewById(R.id.edtRegEmail)
         edtRegPassword = findViewById(R.id.edtRegPassword)

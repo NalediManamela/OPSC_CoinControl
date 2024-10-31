@@ -94,7 +94,7 @@ class Category : AppCompatActivity() {
                     val categories = response.body() ?: emptyList()
                     categoryAdapter.updateCategories(categories)
                 } else {
-                    Toast.makeText(this@Category, "Failed to fetch categories", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@Category, "No categories", Toast.LENGTH_SHORT).show()
                 }
             }
 

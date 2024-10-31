@@ -48,7 +48,6 @@ class AddNewCategory : AppCompatActivity() {
             // Retrieve the userId from SharedPreferences
             val userId = sharedPreferences.getInt("userId", -1)
             if (userId == -1) {
-                Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 

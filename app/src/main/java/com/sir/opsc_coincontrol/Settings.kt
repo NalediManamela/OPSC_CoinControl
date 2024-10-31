@@ -26,8 +26,9 @@ class Settings : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_settings)
 
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        sharedPreferences =  getSharedPreferences("UserPrefs", MODE_PRIVATE)
         darkModeSwitch = findViewById(R.id.darkLightSwitch)
 
 
@@ -47,9 +48,6 @@ class Settings : AppCompatActivity() {
             })
         }
 
-
-
-
         privacyPolicyButton.setOnClickListener {
             showPrivacyPolicyDialog()
         }
@@ -64,11 +62,6 @@ class Settings : AppCompatActivity() {
             showAboutAppDialog()
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.btnAddDebit)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 
     // Function to display the AlertDialog with Privacy Policy

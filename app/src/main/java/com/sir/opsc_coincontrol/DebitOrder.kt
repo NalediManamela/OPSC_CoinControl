@@ -38,6 +38,8 @@ class DebitOrder : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_debit_order)
 
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
         rvDebit = findViewById(R.id.rv_entries2)
         rvDebit.layoutManager = LinearLayoutManager(this)
 
@@ -58,11 +60,6 @@ class DebitOrder : AppCompatActivity() {
             showAddDebitOrderDialog()
         }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.btnAddDebit)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 
     private fun showAddDebitOrderDialog() {
