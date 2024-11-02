@@ -98,45 +98,45 @@
     <!-- Category Button -->
     <ImageButton
         android:id="@+id/btnCategory"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="130dp"
+        android:layout_height="55dp"
         android:layout_marginStart="32dp"
         android:backgroundTint="@color/white"
         android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnSettings"
-        app:layout_constraintTop_toTopOf="@+id/btnadd"
         app:layout_constraintBottom_toBottomOf="@+id/btnSettings"
+        app:layout_constraintEnd_toStartOf="@+id/btnSettings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnadd"
         app:srcCompat="@drawable/category" />
 
     <!-- Add Button -->
     <ImageButton
         android:id="@+id/btnadd"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="131dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="15dp"
         android:backgroundTint="@color/white"
         android:contentDescription="Debit Orders"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSettings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnSettings"
         app:layout_constraintTop_toTopOf="@+id/btnSettings"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSettings"
-        android:layout_marginEnd="15dp"
         app:srcCompat="@drawable/add" />
 
     <!-- Settings Button -->
     <ImageButton
         android:id="@+id/btnSettings"
-        android:layout_width="0dp"
-        android:layout_height="54dp"
+        android:layout_width="96dp"
+        android:layout_height="61dp"
         android:layout_marginEnd="29dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/white"
         android:contentDescription="Debit Orders"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnadd"
         app:layout_constraintStart_toEndOf="@+id/btnCategory"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/setting" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
