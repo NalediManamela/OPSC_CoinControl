@@ -13,92 +13,119 @@
     <!-- Email Field and Icon -->
 
     <!-- Password Field and Icon -->
-
     <EditText
         android:id="@+id/edtRegEmail"
-        android:layout_width="355dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginTop="24dp"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/edtRegPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/imgEmailIcon"
+        app:layout_constraintTop_toBottomOf="@id/edtRegUserName" />
+
+    <ImageView
+        android:id="@+id/imgUserIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="92dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtRegUserName" />
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogo"
+        app:srcCompat="@drawable/user2" />
 
     <EditText
         android:id="@+id/edtRegUserName"
-        android:layout_width="355dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="95dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginTop="92dp"
         android:hint="Username"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/edtRegEmail"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/imgUserIcon"
+        app:layout_constraintTop_toBottomOf="@id/imageViewLogo" />
+
+    <EditText
+        android:id="@+id/edtRegConfPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/imgConfPasswordIcon"
+        app:layout_constraintTop_toBottomOf="@id/edtRegPassword" />
+
+    <EditText
+        android:id="@+id/edtRegPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/imgPasswordIcon"
+        app:layout_constraintTop_toBottomOf="@id/edtRegEmail" />
+
+    <ImageView
+        android:id="@+id/imgConfPasswordIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
+        app:layout_constraintTop_toBottomOf="@id/edtRegPassword"
+        app:srcCompat="@drawable/security" />
+
+    <ImageView
+        android:id="@+id/imgEmailIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtRegUserName"
+        app:srcCompat="@drawable/email" />
+
+    <ImageView
+        android:id="@+id/imgPasswordIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtRegEmail"
+        app:srcCompat="@drawable/security" />
 
     <!-- Confirm Password Field and Icon -->
 
     <!-- Register Button -->
 
     <!-- Logo Image at the top -->
-    <EditText
-        android:id="@+id/edtRegConfPassword"
-        android:layout_width="355dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="57dp"
-        android:hint="Confirm Password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtRegPassword" />
-
-    <EditText
-        android:id="@+id/edtRegPassword"
-        android:layout_width="355dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="7dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/edtRegConfPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtRegEmail" />
-
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="348dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="98dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
         android:backgroundTint="@color/Teal"
         android:text="Register"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtRegConfPassword" />
+        app:layout_constraintTop_toBottomOf="@id/edtRegConfPassword" />
 
     <ImageView
         android:id="@+id/imageViewLogo"
         android:layout_width="246dp"
         android:layout_height="175dp"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="35dp" />
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="83dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
