@@ -51,7 +51,7 @@
         android:id="@+id/btnAddNewCategory"
         android:layout_width="59dp"
         android:layout_height="64dp"
-        android:layout_marginStart="84dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="12dp"
         android:backgroundTint="@color/white"
         android:contentDescription="Add New Category"
@@ -59,6 +59,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/add" />
+
+    <!-- Debit Orders Button -->
 
     <ImageButton
         android:id="@+id/btnSet"
@@ -75,7 +77,6 @@
         app:layout_constraintStart_toEndOf="@+id/btnAddNewCategory"
         app:srcCompat="@drawable/setting" />
 
-    <!-- Debit Orders Button -->
     <ImageButton
         android:id="@+id/btnDebitOrders"
         android:layout_width="59dp"
@@ -90,5 +91,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnSet"
         app:srcCompat="@drawable/moneybag" />
+
+    <Button
+        android:id="@+id/btnDashboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:text="Button"
+        app:layout_constraintStart_toEndOf="@+id/btnDebitOrders"
+        app:layout_constraintTop_toBottomOf="@+id/rvCategories" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

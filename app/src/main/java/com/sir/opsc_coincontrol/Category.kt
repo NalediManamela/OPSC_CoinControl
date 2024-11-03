@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -27,6 +28,7 @@ class Category : AppCompatActivity() {
     private lateinit var btnAddNewCategory: ImageButton
     private lateinit var btnDebit: ImageButton
     private lateinit var btnSettings: ImageButton
+    private lateinit var btnDashboard: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,7 @@ class Category : AppCompatActivity() {
         btnAddNewCategory = findViewById(R.id.btnAddNewCategory)
         btnDebit = findViewById(R.id.btnDebitOrders)
         btnSettings = findViewById(R.id.btnSet)
+        btnDashboard = findViewById(R.id.btnDashboard)
         rvCategories.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
 
@@ -77,6 +80,11 @@ class Category : AppCompatActivity() {
 
         btnSettings.setOnClickListener {
             val intent = Intent(this, Settings::class.java)
+            startActivity(intent)
+        }
+
+        btnDashboard.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
 

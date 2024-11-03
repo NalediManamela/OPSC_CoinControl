@@ -202,7 +202,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToCategories() {
-        val intent = Intent(this, Category::class.java)
+        val intent = Intent(this,Category::class.java)
         startActivity(intent)
         finish()
     }

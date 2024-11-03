@@ -59,4 +59,8 @@ interface ApiService {
 
     @DELETE("api/transaction/{id}")
     fun deleteTransaction(@Path("id") transactionId: Int): Call<Unit>
+
+    @GET("api/Transaction/user/{userId}")
+    fun getTransactionsByUser(@Path("userId") userId: Int): Call<List<TransactionDTO>>
+
 }
