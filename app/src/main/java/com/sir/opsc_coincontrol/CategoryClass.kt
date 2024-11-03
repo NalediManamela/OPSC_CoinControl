@@ -7,5 +7,6 @@ data class CategoryClass(
     var userID: Int = 0,
     var budget: Double,
     var amountSpent: Double,
-    var average: Double
+    var average: Double,
+    var transactionID: Int = 0
 )

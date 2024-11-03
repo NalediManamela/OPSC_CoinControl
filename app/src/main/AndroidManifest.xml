@@ -13,10 +13,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
-        tools:targetApi="31"
-        android:theme="@style/Theme.AppCompat.DayNight">
-
+        android:theme="@style/Theme.AppCompat.DayNight"
+        tools:targetApi="31">
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="false" />
         <activity
             android:name=".Category"
             android:exported="false"
@@ -26,7 +27,6 @@
             android:name=".Register"
             android:exported="false"
             android:theme="@style/Theme.OPSC_CoinControl.NoActionBar" />
-
         <activity
             android:name=".Transaction"
             android:exported="false"
@@ -47,7 +47,6 @@
             android:name=".Profile"
             android:exported="false"
             android:theme="@style/Theme.OPSC_CoinControl.NoActionBar" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -3,6 +3,7 @@ package com.sir.opsc_coincontrol
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -57,7 +58,8 @@ class AddNewCategory : AppCompatActivity() {
                 categoryName = categoryName,
                 budget = budgetCat,
                 amountSpent = 0.0,
-                average = 0.0
+                average = 0.0,
+                transactionID = 0
             )
 
             // Call the API to add the category
@@ -78,18 +80,20 @@ class AddNewCategory : AppCompatActivity() {
                     edtCategoryName.text.clear()
                     edtBudget.text.clear()
 
-
                     val intent = Intent(this@AddNewCategory, Category::class.java)
                     intent.putExtra("refresh", true)
                     startActivity(intent)
                 } else {
+                    val statusCode = response.code()
+                    Log.e("AddNewCategory", "Status code: $statusCode")
                     Toast.makeText(
                         this@AddNewCategory,
-                        "Failed to add category",
-                        Toast.LENGTH_SHORT
+                        "Failed to add category. Status code: $statusCode",
+                        Toast.LENGTH_LONG
                     ).show()
                 }
             }
+
 
             override fun onFailure(call: Call<CategoryClass>, t: Throwable) {
                 Toast.makeText(
@@ -98,6 +102,8 @@ class AddNewCategory : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+
+
         })
     }
 }
