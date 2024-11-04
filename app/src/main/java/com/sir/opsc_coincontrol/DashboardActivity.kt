@@ -1,5 +1,6 @@
 package com.sir.opsc_coincontrol
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
@@ -8,12 +9,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.sir.opsc_coincontrol.adapters.CategoryAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +28,8 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var txtTotalSpending: TextView
     private lateinit var txtBudgetUtilization: TextView
     private lateinit var txtMostFrequentCategories: TextView
+    private lateinit var rvFavoriteCategories: RecyclerView
+    private lateinit var favouriteCategoriesAdapter: CategoryAdapter
 
     private lateinit var sharedPreferences: SharedPreferences
     private var userId: Int = -1
@@ -54,6 +60,44 @@ class DashboardActivity : AppCompatActivity() {
             // Redirect to login if necessary
         }
 
+        rvFavoriteCategories = findViewById(R.id.rvFavouriteCategories)
+        rvFavoriteCategories.layoutManager = LinearLayoutManager(this)
+
+        favouriteCategoriesAdapter = CategoryAdapter(
+            categories = listOf(),
+            onItemClick = { category ->
+                // Handle click to open transactions for the category
+                openCategoryTransactions(category)
+            },
+            onItemLongClickListener = null,
+            onFavouriteClick = null,
+            isEditable = false // Set to false to disable favorite toggling
+        )
+
+        rvFavoriteCategories.adapter = favouriteCategoriesAdapter
+
+
+        rvFavoriteCategories.adapter = favouriteCategoriesAdapter
+
+        // Existing code...
+
+        // Fetch favorite categories
+        fetchFavoriteCategories(userId)
+
+    }
+
+    private fun displayFavoriteCategories(categories: List<CategoryClass>) {
+        categories.forEach { category ->
+            Log.d("DashboardActivity", "Category: ${category.categoryName}")
+        }
+        favouriteCategoriesAdapter.updateCategories(categories)
+    }
+
+    private fun openCategoryTransactions(category: CategoryClass) {
+        // Implement the logic to open the transactions for the selected category
+        val intent = Intent(this, Transaction::class.java)
+        intent.putExtra("categoryId", category.cat_ID)
+        startActivity(intent)
     }
 
     private fun fetchDashboardData(userId: Int) {
@@ -196,6 +240,56 @@ class DashboardActivity : AppCompatActivity() {
         txtBudgetUtilization.text = "Budget Utilization: R${String.format("%.2f", totalSpending)} / R${String.format("%.2f", totalBudget)}"
         txtMostFrequentCategories.text = "Most Frequent Categories: ${mostFrequentCategories.joinToString(", ")}"
     }
+
+    private fun fetchFavoriteCategories(userId: Int) {
+        RetrofitClient.instance.getFavouriteCategoriesByUser(userId)
+            .enqueue(object : Callback<List<CategoryClass>> {
+                override fun onResponse(
+                    call: Call<List<CategoryClass>>,
+                    response: Response<List<CategoryClass>>
+                ) {
+                    if (response.isSuccessful) {
+                        val favoriteCategories = response.body() ?: emptyList()
+                        displayFavoriteCategories(favoriteCategories)
+                    } else {
+                        Toast.makeText(
+                            this@DashboardActivity,
+                            "Failed to load favorite categories",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<List<CategoryClass>>, t: Throwable) {
+                    Toast.makeText(
+                        this@DashboardActivity,
+                        "Error: ${t.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
+    }
+
+    private fun fetchAllCategoriesAndFilterFavorites(userId: Int) {
+        RetrofitClient.instance.getCategoriesByUser(userId)
+            .enqueue(object : Callback<List<CategoryClass>> {
+                override fun onResponse(call: Call<List<CategoryClass>>, response: Response<List<CategoryClass>>) {
+                    if (response.isSuccessful) {
+                        val allCategories = response.body() ?: emptyList()
+                        val favoriteCategories = allCategories.filter { it.isFavourite == true }
+                        displayFavoriteCategories(favoriteCategories)
+                    } else {
+                        Toast.makeText(this@DashboardActivity, "No categories", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<List<CategoryClass>>, t: Throwable) {
+                    Toast.makeText(this@DashboardActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
+
 
 
 

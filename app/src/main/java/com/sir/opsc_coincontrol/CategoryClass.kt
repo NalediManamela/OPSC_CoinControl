@@ -8,5 +8,6 @@ data class CategoryClass(
     var budget: Double,
     var amountSpent: Double,
     var average: Double,
-    var transactionID: Int = 0
+    var transactionID: Int = 0,
+    var isFavourite: Boolean?
 )

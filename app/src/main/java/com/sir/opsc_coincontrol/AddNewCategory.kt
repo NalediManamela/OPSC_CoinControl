@@ -59,7 +59,8 @@ class AddNewCategory : AppCompatActivity() {
                 budget = budgetCat,
                 amountSpent = 0.0,
                 average = 0.0,
-                transactionID = 0
+                transactionID = 0,
+                isFavourite = false
             )
 
             // Call the API to add the category

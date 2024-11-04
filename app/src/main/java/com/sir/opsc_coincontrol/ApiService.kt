@@ -6,6 +6,7 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -62,5 +63,16 @@ interface ApiService {
 
     @GET("api/Transaction/user/{userId}")
     fun getTransactionsByUser(@Path("userId") userId: Int): Call<List<TransactionDTO>>
+
+    @PUT("api/categories/{id}/favourite")
+    fun updateFavouriteStatus(
+        @Path("id") categoryId: Int,
+        @Body isFavorite: Boolean?
+    ): Call<Void>
+
+    @GET("api/categories/user/{userId}/favourites")
+    fun getFavouriteCategoriesByUser(
+        @Path("userId") userId: Int
+    ): Call<List<CategoryClass>>
 
 }
