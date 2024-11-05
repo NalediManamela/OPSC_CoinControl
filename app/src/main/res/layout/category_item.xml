@@ -1,25 +1,41 @@
-<!-- res/layout/category_item.xml -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:foreground="?android:attr/selectableItemBackground">
 
-    <!-- This is the TextView to display the category name -->
-    <TextView
-        android:id="@+id/tvCategoryName"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Category Name"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:padding="8dp" />
+        android:orientation="horizontal"
+        android:padding="12dp">
 
-    <!-- Favorite Icon -->
-    <ImageView
-        android:id="@+id/imgFavourite"
-        android:layout_width="34dp"
-        android:layout_height="28dp"
-        android:src="@drawable/grocery" />
-</LinearLayout>
+        <!-- Icon for Favorite Status -->
+        <ImageView
+            android:id="@+id/imgFavourite"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:src="@drawable/star_outline"
+            android:contentDescription="Favorite Icon"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="12dp"/>
+
+        <!-- TextView to Display Category Name -->
+        <TextView
+            android:id="@+id/tvCategoryName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="Category Name"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:textColor="?android:textColorPrimary" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

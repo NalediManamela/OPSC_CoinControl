@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OPSC_CoinControl</string>
+    <string name="app_name">Coin Control</string>
     <string name="title_activity_transactions">Transactions</string>
     <string name="server_client_id"> 399813814161-v8bpn50t34gasajm6ucm5oc5sjb3vr8b.apps.googleusercontent.com</string>
 

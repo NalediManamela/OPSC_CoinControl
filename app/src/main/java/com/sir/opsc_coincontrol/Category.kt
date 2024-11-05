@@ -28,7 +28,8 @@ class Category : AppCompatActivity() {
     private lateinit var btnAddNewCategory: ImageButton
     private lateinit var btnDebit: ImageButton
     private lateinit var btnSettings: ImageButton
-    private lateinit var btnDashboard: Button
+    private lateinit var btnDashboard: ImageButton
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +42,7 @@ class Category : AppCompatActivity() {
         btnSettings = findViewById(R.id.btnSet)
         btnDashboard = findViewById(R.id.btnDashboard)
         rvCategories.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
 
         categoryAdapter = CategoryAdapter(

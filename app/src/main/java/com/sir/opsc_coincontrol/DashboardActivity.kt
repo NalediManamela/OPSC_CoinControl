@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -30,6 +31,10 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var txtMostFrequentCategories: TextView
     private lateinit var rvFavoriteCategories: RecyclerView
     private lateinit var favouriteCategoriesAdapter: CategoryAdapter
+    private lateinit var btnAddNewCategory: ImageButton
+    private lateinit var btnDebit: ImageButton
+    private lateinit var btnSettings: ImageButton
+    private lateinit var btnCategoryDash: ImageButton
 
     private lateinit var sharedPreferences: SharedPreferences
     private var userId: Int = -1
@@ -50,6 +55,11 @@ class DashboardActivity : AppCompatActivity() {
         txtBudgetUtilization = findViewById(R.id.txtBudgetUtilization)
         txtMostFrequentCategories = findViewById(R.id.txtMostFrequentCategories)
 
+        btnAddNewCategory = findViewById(R.id.btnAddNewCategory)
+        btnDebit = findViewById(R.id.btnDebitOrders)
+        btnSettings = findViewById(R.id.btnSet)
+        btnCategoryDash = findViewById(R.id.btnCategoryDash)
+
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         userId = sharedPreferences.getInt("userId", -1)
 
@@ -58,6 +68,26 @@ class DashboardActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
             // Redirect to login if necessary
+        }
+
+        btnAddNewCategory.setOnClickListener {
+            val intent = Intent(this, AddNewCategory::class.java)
+            startActivity(intent)
+        }
+
+        btnDebit.setOnClickListener {
+            val intent = Intent(this, DebitOrder::class.java)
+            startActivity(intent)
+        }
+
+        btnSettings.setOnClickListener {
+            val intent = Intent(this, Settings::class.java)
+            startActivity(intent)
+        }
+
+        btnCategoryDash.setOnClickListener {
+            val intent = Intent(this, Category::class.java)
+            startActivity(intent)
         }
 
         rvFavoriteCategories = findViewById(R.id.rvFavouriteCategories)
