@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id ("kotlin-kapt")
 }
 
 android {
@@ -60,5 +61,20 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.5.0")
     implementation ("com.google.android.gms:play-services-auth:21.2.0")
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    // Room components
+    implementation ("androidx.room:room-runtime:2.5.2")
+    kapt ("androidx.room:room-compiler:2.5.2")
+
+
+    // Kotlin extensions for Room
+    implementation ("androidx.room:room-ktx:2.5.2")
+
+    // WorkManager
+    implementation ("androidx.work:work-runtime-ktx:2.8.1")
+
+    // Optional: Lifecycle components
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 
 }

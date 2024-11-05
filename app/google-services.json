@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "472856391435",
+    "project_id": "opsc-coincontrol",
+    "storage_bucket": "opsc-coincontrol.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472856391435:android:f298b362b2073a8755bc0e",
+        "android_client_info": {
+          "package_name": "com.sir.opsc_coincontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472856391435-8aehg3hnnqtotbcfg4o4t5edmjqm6dbp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXehPr3e3OUKA9edGqi7g4tTRLLf5uMg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "472856391435-8aehg3hnnqtotbcfg4o4t5edmjqm6dbp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

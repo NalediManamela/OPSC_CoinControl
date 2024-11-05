@@ -187,12 +187,16 @@ class Transaction : AppCompatActivity() {
                         val category = response.body()
                         if (category != null) {
 
-                            txtAmountSpent.text = "Amount Spent: R${category.amountSpent ?: 0.0}"
-                            txtAmountBudgeted.text = "Budget: R${category.budget ?: 0.0}"
-                            txtAverageSpent.text = "Average Spending: R${category.average ?: 0.0}"
-
                             val amountSpent = category.amountSpent ?: 0.0
                             val budget = category.budget ?: 0.0
+                            val averageSpending = category.average ?: 0.0
+
+                            val formattedAverage = String.format("%.2f", averageSpending) // Limit to 2 decimals
+
+                            txtAmountSpent.text = "Amount Spent: R${String.format("%.2f", amountSpent)}"
+                            txtAmountBudgeted.text = "Budget: R${String.format("%.2f", budget)}"
+                            txtAverageSpent.text = "Average Spending: R$formattedAverage"
+
 
                             // Set the color to red if amount spent is greater than the budget
                             if (amountSpent > budget) {

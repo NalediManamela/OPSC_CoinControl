@@ -30,6 +30,8 @@ class CategoryAdapter(
     }
 
 
+
+
     override fun getItemCount(): Int = categories.size
 
     // Method to set the long-click listener
@@ -62,9 +64,9 @@ class CategoryAdapter(
             tvCategoryName.text = category.categoryName ?: "No Name"
 
             val favoriteIconRes = if (category.isFavourite != true) {
-                R.drawable.grocery
+                R.drawable.star_outline
             } else {
-                R.drawable.moneybag
+                R.drawable.star_full
             }
             imgFavourite.setImageResource(favoriteIconRes)
 
