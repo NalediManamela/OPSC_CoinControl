@@ -130,4 +130,5 @@ Totale besteding</string>
     <string name="TransactionAmount" >  Transaksie Bedrag</string>
     <string name="TransactionDate" >  Transaksie Datum </string>
     <string name="txtTotal" >  Totaal </string>
+    <string name="TextView"> Verskuldig</string >
 </resources>
