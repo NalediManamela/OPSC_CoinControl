@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Coin Control</string>
-    <string name="title_activity_transactions">Transactions</string>
+    <string name="title_activity_transactions">Transaksies</string>
     <string name="server_client_id"> 399813814161-v8bpn50t34gasajm6ucm5oc5sjb3vr8b.apps.googleusercontent.com</string>
 
 
@@ -93,40 +93,41 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
-    <string name="action_settings">Settings</string>
-    <string name="title_home">Home</string>
+    <string name="action_settings">Instellings</string>
+    <string name="title_home">Tuis</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">Notifikasies</string>
     <string name="Mode">Mode </string>
-    <string name="settings">Settings </string>
-    <string name="DarkandLight">Dark Mode </string>
-    <string name="Language">Language </string>
-    <string name="AboutApp">About app</string>
-    <string name="TermsandConditions">Terms and Conditions</string>
-    <string name="PrivacyPolicy">Privacy Policy</string>
-    <string name="DebitName">Debit Name</string>
-    <string name="DueDate">Due Date</string>
-    <string name="DebitDate">Debit Date</string>
-    <string name="DebitAmount">Debit Amount</string>
-    <string name="ADD"> ADD </string>
-    <string name="Budget"> Budget </string>
-    <string name="CategoryName">CategoryName  </string>
-    <string name="AddNewCategory">AddNewCategory</string>
-    <string name="Category" >Category</string>
-    <string name="TotalSpending" >TotalSpending</string>
-    <string name="BudgetUtilization">Budget Utilization</string>
-    <string name="FavoriteCategories" >Favorite Categories  </string>
-    <string name="DebitOrders" > Debit Orders  </string>
-    <string name="SUMMARY" > SUMMARY </string>
-    <string name="Total" > Total </string>
-    <string name="Transactions" > Transactions </string>
-    <string name="AmountBudgeted" >Amount Budgeted</string>
-    <string name="AmountSpent" > Amount Spent </string>
-    <string name="AverageSpending" >Average Spending  </string>
-    <string name="AddTransaction" > Add Transaction  </string>
-    <string name="TransactionName" > Transaction Name </string>
-    <string name="TransactionAmount" >  Transaction Amount</string>
-    <string name="TransactionDate" >  Transaction Date </string>
-    <string name="txtTotal" >  Total </string>
-    //TermsandConditions
+    <string name="settings">Instellings </string>
+    <string name="DarkandLight">Donker Mode </string>
+    <string name="Language">Taal </string>
+    <string name="AboutApp">Van Toep</string>
+    <string name="TermsandConditions">terme en voorwaardes</string>
+    <string name="PrivacyPolicy">Privaatheidsbeleid</string>
+    <string name="DebitName">
+Debiet Naam</string>
+    <string name="DueDate">Sperdatum</string>
+    <string name="DebitDate">Debietdatum</string>
+    <string name="DebitAmount">Debietbedrag</string>
+    <string name="ADD"> Voeg By </string>
+    <string name="Budget"> Begroting </string>
+    <string name="CategoryName">Kategorie Naam  </string>
+    <string name="AddNewCategory"> Voeg nuwe Kategorie </string>
+    <string name="Category" >Kategorie</string>
+    <string name="TotalSpending" >
+Totale besteding</string>
+    <string name="BudgetUtilization">Begrotingsbenutting</string>
+    <string name="FavoriteCategories" >Gunsteling kategorieë </string>
+    <string name="DebitOrders" > Debietorders</string>
+    <string name="SUMMARY" > Opsomming </string>
+    <string name="Total" > Totaal </string>
+    <string name="Transactions" > Transaksies </string>
+    <string name="AmountBudgeted" >Bedrag begroot</string>
+    <string name="AmountSpent" > Bedrag spandeer </string>
+    <string name="AverageSpending" >Gemiddelde Spandering  </string>
+    <string name="AddTransaction" > Voeg Transaksie  </string>
+    <string name="TransactionName" > Transaksie Naame</string>
+    <string name="TransactionAmount" >  Transaksie Bedrag</string>
+    <string name="TransactionDate" >  Transaksie Datum </string>
+    <string name="txtTotal" >  Totaal </string>
 </resources>

@@ -12,7 +12,7 @@
         android:id="@+id/tvTransactionName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Transaction Name"
+        android:text="@string/TransactionName"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -20,13 +20,13 @@
         android:id="@+id/tvTransactionAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Transaction Amount"
+        android:text="@string/TransactionAmount"
         android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tvTransactionDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Transaction Date"
+        android:text="@string/TransactionDate"
         android:textSize="14sp" />
 </LinearLayout>

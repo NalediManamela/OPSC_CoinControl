@@ -1,8 +1,13 @@
 package com.sir.opsc_coincontrol
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
@@ -10,6 +15,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.animation.Easing
@@ -44,7 +51,8 @@ class DashboardActivity : AppCompatActivity() {
     private var transactionsDTO: List<TransactionDTO> = emptyList()
 
     private var completedCalls = 0
-
+    private val NOTIFICATION_THRESHOLD = 3000.0
+    private val CHANNEL_ID = "CATEGORY_THRESHOLD_NOTIFICATION"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -114,6 +122,7 @@ class DashboardActivity : AppCompatActivity() {
         // Fetch favorite categories
         fetchFavoriteCategories(userId)
 
+        createNotificationChannel()
     }
 
     private fun displayFavoriteCategories(categories: List<CategoryClass>) {
@@ -121,6 +130,52 @@ class DashboardActivity : AppCompatActivity() {
             Log.d("DashboardActivity", "Category: ${category.categoryName}")
         }
         favouriteCategoriesAdapter.updateCategories(categories)
+    }
+
+
+
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "Category Threshold Notifications"
+            val descriptionText = "Notifies when a category exceeds the specified threshold"
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
+                description = descriptionText
+                enableLights(true)
+                lightColor = Color.RED
+                enableVibration(true)
+            }
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+    private fun sendThresholdNotification(category: String, amount: Double) {
+        val notificationBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.grocery)
+            .setContentTitle("Spending Alert")
+            .setContentText("Category '$category' has exceeded R$NOTIFICATION_THRESHOLD with spending of R${String.format("%.2f", amount)}")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setAutoCancel(true)
+            .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
+            .setLights(Color.RED, 3000, 3000)
+
+        try {
+            with(NotificationManagerCompat.from(this)) {
+                // Check for notification permission on Android 13 and above
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+                        notify(category.hashCode(), notificationBuilder.build())
+                    }
+                } else {
+                    notify(category.hashCode(), notificationBuilder.build())
+                }
+            }
+        } catch (e: SecurityException) {
+            Log.e("DashboardActivity", "Failed to send notification: ${e.message}")
+            Toast.makeText(this, "Notification permission required", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun openCategoryTransactions(category: CategoryClass) {
@@ -195,11 +250,17 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun processDashboardData() {
         val categoryMap = categories.associateBy { it.cat_ID }
-
         val spendingMap = calculateSpendingPerCategory(transactionsDTO, categoryMap)
         val totalSpending = calculateTotalSpending(transactionsDTO)
         val totalBudget = calculateTotalBudget(categories)
         val mostFrequentCategories = getMostFrequentCategories(transactionsDTO, categoryMap)
+
+        // Check spending thresholds for each category
+        spendingMap.forEach { (categoryName, amount) ->
+            if (amount > NOTIFICATION_THRESHOLD) {
+                sendThresholdNotification(categoryName, amount)
+            }
+        }
 
         setupPieChart(spendingMap)
         updateSummaryUI(totalSpending, totalBudget, mostFrequentCategories)

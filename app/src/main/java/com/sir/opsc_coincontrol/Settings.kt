@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.appcompat.app.AppCompatDelegate
+import java.util.Locale
 
 class Settings : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
@@ -20,49 +21,50 @@ class Settings : AppCompatActivity() {
     private lateinit var privacyPolicyButton: Button
     private lateinit var termsButton: Button
     private lateinit var aboutAppButton: Button
+    private lateinit var languageSwitch: Switch
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_settings)
 
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-
-        sharedPreferences =  getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         darkModeSwitch = findViewById(R.id.darkLightSwitch)
-
-
+        languageSwitch = findViewById(R.id.Languageswitch)
         privacyPolicyButton = findViewById(R.id.privacyPolicyButton)
         termsButton = findViewById(R.id.termsButton)
         aboutAppButton = findViewById(R.id.aboutAppButton)
 
+        // Set initial state of the language switch based on saved preference
+        val isAfrikaans = sharedPreferences.getBoolean("isAfrikaans", false)
+        languageSwitch.isChecked = isAfrikaans
+        setLocale(if (isAfrikaans) "af" else "en")
+
+        // Listener for language switch
+        languageSwitch.setOnCheckedChangeListener { _, isChecked ->
+            val newLanguage = if (isChecked) "af" else "en"
+            sharedPreferences.edit().putBoolean("isAfrikaans", isChecked).apply()
+            setLocale(newLanguage)
+            recreate() // Refresh activity to apply language change
+        }
 
         darkModeSwitch.isChecked = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
-
-        // Set the listener for the switch
         darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
-            AppCompatDelegate.setDefaultNightMode(if (isChecked) {
-                AppCompatDelegate.MODE_NIGHT_YES
-            } else {
-                AppCompatDelegate.MODE_NIGHT_NO
-            })
+            AppCompatDelegate.setDefaultNightMode(if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO)
         }
 
-        privacyPolicyButton.setOnClickListener {
-            showPrivacyPolicyDialog()
-        }
-
-
-        termsButton.setOnClickListener {
-            showTermsAndConditionsDialog()
-        }
-
-
-        aboutAppButton.setOnClickListener {
-            showAboutAppDialog()
-        }
-
+        privacyPolicyButton.setOnClickListener { showPrivacyPolicyDialog() }
+        termsButton.setOnClickListener { showTermsAndConditionsDialog() }
+        aboutAppButton.setOnClickListener { showAboutAppDialog() }
     }
+
+    private fun setLocale(languageCode: String) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val config = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+    }
+
 
     // Function to display the AlertDialog with Privacy Policy
     private fun showPrivacyPolicyDialog() {

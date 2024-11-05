@@ -46,7 +46,7 @@ class DebitOrder : AppCompatActivity() {
 
         btnCategory = findViewById(R.id.btnCategory)
         btnSettings = findViewById(R.id.btnSettings)
-        btnHomeDebit = findViewById(R.id.btnDashboardDebit)
+
 
         rvDebit = findViewById(R.id.rv_entries2)
         rvDebit.layoutManager = LinearLayoutManager(this)
@@ -64,10 +64,6 @@ class DebitOrder : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnHomeDebit.setOnClickListener {
-            val intent = Intent(this, DashboardActivity::class.java)
-            startActivity(intent)
-        }
 
 
         // Fetch data related to debit orders
@@ -211,7 +207,7 @@ class DebitOrder : AppCompatActivity() {
                     override fun onResponse(call: Call<Double>, response: Response<Double>) {
                         if (response.isSuccessful) {
                             val totalAmount = response.body() ?: 0.0
-                            txtTotal.text = "Total: $totalAmount"
+                            txtTotal.text = " $totalAmount"
                         } else {
                             Toast.makeText(this@DebitOrder, "Failed to load total amount", Toast.LENGTH_SHORT).show()
                         }
@@ -229,7 +225,7 @@ class DebitOrder : AppCompatActivity() {
                     override fun onResponse(call: Call<Double>, response: Response<Double>) {
                         if (response.isSuccessful) {
                             val totalDueAmount = response.body() ?: 0.0
-                            txtDue.text = "Total Due this Month: $totalDueAmount"
+                            txtDue.text = " $totalDueAmount"
                         } else {
                             Toast.makeText(this@DebitOrder, "Failed to load total due amount", Toast.LENGTH_SHORT).show()
                         }
