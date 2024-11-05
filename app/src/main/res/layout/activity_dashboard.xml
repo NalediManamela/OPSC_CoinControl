@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:chart="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:chart="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="12dp">
 
     <!-- Pie Chart Card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/pieChartCard"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:cardElevation="4dp"
+        android:layout_marginBottom="12dp"
         app:cardCornerRadius="8dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/pieChart"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:padding="16dp" />
+            android:layout_height="280dp"
+            android:padding="12dp" />
     </androidx.cardview.widget.CardView>
 
     <!-- Summary Statistics Card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/summaryCard"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:padding="16dp"
-        app:cardElevation="4dp"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp"
         app:cardCornerRadius="8dp"
-        app:layout_constraintTop_toBottomOf="@id/pieChartCard"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/pieChartCard">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,27 +48,26 @@
                 android:id="@+id/txtTotalSpending"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
                 android:text="Total Spending: "
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtBudgetUtilization"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
                 android:text="Budget Utilization: "
-                android:textSize="18sp"
-                android:layout_marginBottom="8dp"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/txtMostFrequentCategories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
                 android:text="Most Frequent Categories: "
-                android:textSize="18sp"
-                android:layout_marginBottom="8dp"/>
-
+                android:textSize="16sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -79,91 +77,89 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Favorite Categories"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/summaryCard"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/summaryCard" />
 
     <!-- Favorite Categories RecyclerView -->
     <androidx.cardview.widget.CardView
         android:id="@+id/favouriteCategoriesCard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:cardElevation="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
         app:cardCornerRadius="8dp"
-        app:layout_constraintTop_toBottomOf="@id/tvFavoriteCategoriesTitle"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toTopOf="@id/bottomButtonsContainerDash"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/tvFavoriteCategoriesTitle">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFavouriteCategories"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp" />
+            android:padding="6dp" />
     </androidx.cardview.widget.CardView>
 
     <!-- Bottom Button Group in Card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/bottomButtonsContainerDash"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:cardElevation="4dp"
         app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_marginTop="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:padding="8dp"
-            android:gravity="center_horizontal">
+            android:padding="6dp">
 
             <ImageButton
                 android:id="@+id/btnAddNewCategory"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Add New Category"
-                android:padding="4dp"
+                android:padding="2dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/add" />
 
             <ImageButton
                 android:id="@+id/btnSet"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Settings"
-                android:padding="4dp"
+                android:padding="2dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/setting" />
 
             <ImageButton
                 android:id="@+id/btnDebitOrders"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Debit Orders"
-                android:padding="4dp"
+                android:padding="2dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/moneybag" />
 
             <ImageButton
                 android:id="@+id/btnCategoryDash"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Category"
-                android:padding="4dp"
+                android:padding="2dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/category" />
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
