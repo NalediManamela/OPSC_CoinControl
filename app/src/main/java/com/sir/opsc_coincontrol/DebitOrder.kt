@@ -2,6 +2,7 @@ package com.sir.opsc_coincontrol
 
 import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -32,6 +33,9 @@ class DebitOrder : AppCompatActivity() {
     private lateinit var txtTotal: TextView
     private lateinit var btnAddDebitOrder: ImageButton
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var btnCategory: ImageButton
+    private lateinit var btnSettings: ImageButton
+    private lateinit var btnHomeDebit: ImageButton
     private var userId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +43,10 @@ class DebitOrder : AppCompatActivity() {
         setContentView(R.layout.activity_debit_order)
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        btnCategory = findViewById(R.id.btnCategory)
+        btnSettings = findViewById(R.id.btnSettings)
+        btnHomeDebit = findViewById(R.id.btnDashboardDebit)
 
         rvDebit = findViewById(R.id.rv_entries2)
         rvDebit.layoutManager = LinearLayoutManager(this)
@@ -50,6 +58,17 @@ class DebitOrder : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         userId = sharedPreferences.getInt("userId", -1)
         Log.d(TAG, "Fetched User ID from SharedPreferences: $userId")
+
+        btnCategory.setOnClickListener {
+            val intent = Intent(this, Category::class.java)
+            startActivity(intent)
+        }
+
+        btnHomeDebit.setOnClickListener {
+            val intent = Intent(this, DashboardActivity::class.java)
+            startActivity(intent)
+        }
+
 
         // Fetch data related to debit orders
         DebitOrders().fetchDebitOrders()
